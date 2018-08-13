@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/login.css">
+        <script src="javascript/main.js"></script>
+        <script src="javascript/login.js"></script>
+    </head>
+    <body>
+        <canvas width="250" height="100" id="fire" class="login-canvas"></canvas>
+
+        <ul>
+            <li>----------------------------------------------------------------</li>
+            <li>***** Dramatis Personae *****</li>
+            <li>Developer: Cherneakov Andrey (Building)</li>
+            <li>Developer: Sapelinikov Artem (Building)</li>
+            <li>Mentor: Ruslan Gramatic (User/Account/Room/Message)</li>
+            <li>Developer: Sharpilo Artem (User/Account/Room/Message)</li>
+            <li>Developer: Yevgen Kaliba (Resource)</li>
+            <li>Developer: ...(Resource)</li>
+            <li>Developer: Greshilov Konstantin (Card)</li>
+            <li>Developer: Yarotcii Andrey (Card)</li>
+            <li>Developer: Mihail Malomuzh (Update/Achievement)</li>
+            <li>Developer: Alexey Kostash (Update/Achievement)</li>
+            <li>Developer: ... (Notification)</li>
+            <li>Developer: ... (Notification)</li>
+            <li>Developer: ... (Support)</li>
+            <li>Developer: ... (Support)</li>
+        </ul>
+
+        <img src="images/chicken_1.png" style="position: absolute; top:100px; right: 0">
+        <img src="images/chicken_2.png" style="position: absolute; top:80px; left: 0">
+        <div class="login-form">
+            <h1 class="game-logo-font" style="margin-bottom: 30px">Card War Game</h1>
+            <input id="name" type="text" class="game-input" placeholder="Name"><br>
+            <input id="password" type="password" class="game-input" placeholder="Password"><br>
+            <button id="login" class="game-button" onclick="restRequest('POST',
+                REST_API_URL + '/user/login', refreshButtonsStatus, {
+                    name: document.getElementById('name').value,
+                    password: document.getElementById('password').value
+                })">Login
+            </button>
+            <button id="new_user" class="game-button" onclick="restRequest('POST',
+                REST_API_URL + '/user/new', refreshButtonsStatus, {
+                    name: document.getElementById('name').value,
+                    password: document.getElementById('password').value
+                })">Create New Account
+            </button>
+            <button id="logout" class="game-button" onclick="restRequest('GET',
+                REST_API_URL + '/user/logout', refreshButtonsStatus);">Logout
+            </button>
+            <button id="lets_play" onclick="window.location.replace(RESOURCE_URL + '/rooms.html')">
+                <b class="glow-effect">Let's Play!</b>
+            </button>
+            <button style="background-color: #7cff03; color: #333333"
+                    onclick="window.location.replace(RESOURCE_URL + '/test.html')">Developer Tests
+            </button>
+        </div>
+
+        <audio id="loginMusic">
+            <source src="music/login-music.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <script>
+            playMusic();
+            refreshButtonsStatus();
+        </script>
+    </body>
+<html>

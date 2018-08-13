@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/rooms.css">
+        <script src="javascript/main.js"></script>
+        <script src="javascript/rooms.js"></script>
+    </head>
+    <body>
+        <div class="game-site-header">
+            <ul class="ul-info">
+                <li><a class="active" href="rooms.html">Rooms</a></li>
+                <li><a href="gameplay.html">Gameplay</a></li>
+                <li><a href="achievements.html">Achievements</a></li>
+                <li style="float: right">
+                    <a href="#" onclick="restRequest('GET',
+                        REST_API_URL + '/user/logout', logout);">Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="roomsTable" class="container-rooms"></div>
+
+        <script>
+            startRoomLoop();
+        </script>
+    </body>
+<html>
