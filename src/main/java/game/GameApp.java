@@ -16,13 +16,16 @@ public class GameApp {
 		if(args != null && args.length > 0) {
 			switch (args[0]) {
 				case "deploy":
-					DeployDbConfig ddc = new DeployDbConfig();
-					ddc.deployDb();
+					new DeployDbConfig().deployDb();
 					break;
 				case "start":
 					Boolean debug = args.length > 1 && args[0].equals("debug");
 					Integer port = args.length > 2 ? Integer.parseInt(args[1]) : 8080;
 					startServer(debug, port);
+					break;
+				case "run":
+					new DeployDbConfig().deployDb();
+					startServer(false, 8080);
 					break;
 			}
 		} else {
