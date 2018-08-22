@@ -33,7 +33,10 @@ public class UserDaoImpl implements UserDao {
     public void logoutUser(String token) {
         new QueryHelper() {
             protected void executeQuery(Statement statement, Connection connection) throws SQLException {
-                // TODO: Updates Room where user was
+
+                PreparedStatement pstmt = connection.prepareStatement(
+                        ""
+                );// TODO: Updates Room where user was
             }
         }.run();
     }
