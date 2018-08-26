@@ -1,17 +1,22 @@
-package game.dto;
+package game.model;
 
-import java.util.List;
+import java.io.Serializable;
 
-/**
- * @author ruslan.gramatic
- */
-public class BuildingDto {
+public class BuildingEntity implements Serializable {
+
     private Integer id;
     private String name;
     private String description;
-    private List<BuildingResourceDto> buildingProductList;
 
+    public BuildingEntity (Integer id, String name, String description){
+        this.id = id;
+        this.name = name;
+        this.description = description;
+    }
 
+    public BuildingEntity() {
+
+    }
 
     public Integer getId() {
         return id;
@@ -37,22 +42,12 @@ public class BuildingDto {
         this.description = description;
     }
 
-    public List<BuildingResourceDto> getBuildingProductList() {
-        return buildingProductList;
-    }
-
-    public void setBuildingProductList(List<BuildingResourceDto> buildingProductList) {
-        this.buildingProductList = buildingProductList;
-    }
-
     @Override
     public String toString() {
-        return "BuildingDto{" +
+        return "BuildingEntity{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", buildingProductList=" + buildingProductList +
                 '}';
     }
-
 }
