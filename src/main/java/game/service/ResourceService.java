@@ -1,14 +1,9 @@
-package game.controller;
+package game.service;
 
 import game.dto.ResourceDto;
 
 import java.util.List;
 
-/**
- * @author ruslan.gramatic
- */
-public interface ResourceController {
+public interface ResourceService {
     List<ResourceDto> getAllResourceList();
-
-
 }
