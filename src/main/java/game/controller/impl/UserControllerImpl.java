@@ -2,6 +2,8 @@ package game.controller.impl;
 
 import game.controller.UserController;
 import game.dto.UserDto;
+import game.repository.dao.AccountDao;
+import game.repository.dao.impl.AccountDaoImpl;
 import game.service.UserService;
 
 import javax.inject.Inject;

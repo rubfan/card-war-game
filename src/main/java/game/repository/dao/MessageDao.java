@@ -8,7 +8,6 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 public interface MessageDao {
-    List<MessageEntity> getMessageList();
-    String sendMessage(MessageEntity message, Cookie cookie);
-    List<MessageEntity> getRoomMessageList(Cookie cookie);
+    String sendMessage(MessageEntity message, String accountId);
+    List<MessageEntity> getRoomMessageList(String accountId1, String accountId2);
 }

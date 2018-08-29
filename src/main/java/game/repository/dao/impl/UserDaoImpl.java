@@ -1,6 +1,8 @@
 package game.repository.dao.impl;
 
+import game.model.AccountEntity;
 import game.model.UserEntity;
+import game.repository.dao.AccountDao;
 import game.repository.dao.UserDao;
 import game.repository.helper.QueryHelper;
 
@@ -42,20 +44,34 @@ public class UserDaoImpl implements UserDao {
     }
 
     public String createNewUser(UserEntity user) {
+
         return new QueryHelper<String>() {
             protected void executeQuery(Statement statement, Connection connection) throws SQLException {
+
                 PreparedStatement pstmt = connection.prepareStatement(
                         "INSERT IGNORE INTO User (name, password, token) VALUES (?,?,?);");
                 pstmt.setString(1, user.getName());
                 pstmt.setString(2, user.getPassword());
                 pstmt.setString(3, user.getToken());
+
                 int status = pstmt.executeUpdate();
                 if(status > 0) {
                     returnResult(user.getToken());
+                pstmt = connection.prepareStatement("INSERT  INTO Account(user_id) SELECT id FROM User WHERE name = ? AND password = ?; ");
+                pstmt.setString(1,user.getName());
+                pstmt.setString(2,user.getPassword());
+                pstmt.executeUpdate();
                 }
             }
+
+
+
         }.run();
+
+
     }
+
+
 
     public UserEntity getUserByToken(String token) {
         return new QueryHelper<UserEntity>() {

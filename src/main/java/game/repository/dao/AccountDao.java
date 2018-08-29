@@ -5,4 +5,5 @@ import game.model.AccountEntity;
 
 public interface AccountDao {
     AccountEntity getAccount(Integer accountId);
+    AccountEntity setUserId (Integer user_id);
 }

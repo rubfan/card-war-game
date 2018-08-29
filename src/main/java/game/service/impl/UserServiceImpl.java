@@ -2,7 +2,9 @@ package game.service.impl;
 
 import game.dto.UserDto;
 import game.model.UserEntity;
+import game.repository.dao.AccountDao;
 import game.repository.dao.UserDao;
+import game.repository.dao.impl.AccountDaoImpl;
 import game.service.UserService;
 
 import javax.inject.Inject;
@@ -35,6 +37,8 @@ public class UserServiceImpl implements UserService {
         newUser.setName(user.getName());
         newUser.setPassword(user.getPassword());
         newUser.setToken(UUID.randomUUID().toString());
+        AccountDao a= new AccountDaoImpl();
+        a.setUserId(user.getId());
         return userDao.createNewUser(newUser);
     }
 

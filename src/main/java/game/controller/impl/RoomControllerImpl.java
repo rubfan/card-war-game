@@ -39,6 +39,7 @@ public class RoomControllerImpl implements RoomController {
     @GET
     @Path("account/list")
     public List<AccountRoomDto> getAccountRoomList() {
+//        List<AccountRoomDto> accountRoomDtoList = roomService
         return Collections.emptyList(); //TODO: we need to return this list with correct data
     }
 

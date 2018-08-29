@@ -6,7 +6,6 @@ import javax.servlet.http.Cookie;
 import java.util.List;
 
 public interface MessageService {
-    List<MessageDto> getMessageList();
-    String sendMessage(MessageDto message, Cookie cookie);
-    List<MessageDto> getRoomMessageList(Cookie cookie);
+    String sendMessage(MessageDto message, String accountId);
+    List<MessageDto> getRoomMessageList(String accountId1, String accountId2);
 }
