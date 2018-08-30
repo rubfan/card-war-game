@@ -1,12 +1,19 @@
-package game.dto;
+package game.model;
 
-/**
- * @author ruslan.gramatic
- */
-public class ResourceDto {
+import java.io.Serializable;
+
+public class CardGroupEntity implements Serializable {
     private Integer id;
     private String name;
     private String description;
+
+    public CardGroupEntity() {}
+
+    public CardGroupEntity(Integer id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+    }
 
     public Integer getId() {
         return id;
@@ -34,7 +41,7 @@ public class ResourceDto {
 
     @Override
     public String toString() {
-        return "ResourceDto{" +
+        return "CardGroupEntity{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +

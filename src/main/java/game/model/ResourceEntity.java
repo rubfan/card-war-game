@@ -1,12 +1,22 @@
-package game.dto;
+package game.model;
+
+import java.io.Serializable;
 
 /**
- * @author ruslan.gramatic
+ * @author alexey.buheria
  */
-public class ResourceDto {
+public class ResourceEntity implements Serializable {
     private Integer id;
     private String name;
     private String description;
+
+    public ResourceEntity(Integer id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+    }
+
+    public ResourceEntity() {}
 
     public Integer getId() {
         return id;
@@ -34,10 +44,10 @@ public class ResourceDto {
 
     @Override
     public String toString() {
-        return "ResourceDto{" +
+        return "ResourceEntity{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
+                ", description='" + description +
                 '}';
     }
 }
