@@ -1,15 +1,21 @@
 package game.config;
 
+import game.controller.BuildingController;
 import game.controller.RoomController;
 import game.controller.UserController;
+import game.controller.impl.BuildingControllerImpl;
 import game.controller.impl.RoomControllerImpl;
 import game.controller.impl.UserControllerImpl;
+import game.repository.dao.BuildingDao;
 import game.repository.dao.RoomDao;
 import game.repository.dao.UserDao;
+import game.repository.dao.impl.BuildingDaoImpl;
 import game.repository.dao.impl.RoomDaoImpl;
 import game.repository.dao.impl.UserDaoImpl;
+import game.service.BuildingService;
 import game.service.RoomService;
 import game.service.UserService;
+import game.service.impl.BuildingServiceImpl;
 import game.service.impl.RoomServiceImpl;
 import game.service.impl.UserServiceImpl;
 import org.eclipse.jetty.server.Handler;
@@ -95,6 +101,10 @@ public class AppContextConfig {
                     bindAsContract(UserDaoImpl.class).to(UserDao.class);
                     bindAsContract(UserServiceImpl.class).to(UserService.class);
                     bindAsContract(UserControllerImpl.class).to(UserController.class);
+
+                    bindAsContract(BuildingDaoImpl.class).to(BuildingDao.class);
+                    bindAsContract(BuildingServiceImpl.class).to(BuildingService.class);
+                    bindAsContract(BuildingControllerImpl.class).to(BuildingController.class);
                 }
             });
         }};
