@@ -1,12 +1,12 @@
-package game.dto;
+package game.model;
 
-/**
- * @author ruslan.gramatic
- */
-public class AccountUpgradeDto {
+public class AccountUpgradeEntity {
     Integer id;
     Integer accountId;
     Integer upgradeId;
+
+    public AccountUpgradeEntity() {
+    }
 
     public Integer getId() {
         return id;
@@ -34,7 +34,7 @@ public class AccountUpgradeDto {
 
     @Override
     public String toString() {
-        return "AccountUpgradeDto{" +
+        return "AccountUpgradeEntity{" +
                 "id=" + id +
                 ", accountId=" + accountId +
                 ", upgradeId=" + upgradeId +

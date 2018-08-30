@@ -10,4 +10,8 @@ public class BuildingDto {
     private String name;
     private String description;
     private List<BuildingResourceDto> buildingProductList;
+
+    public Integer getId() {
+        return id;
+    }
 }

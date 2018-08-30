@@ -1,26 +1,25 @@
-package game.dto;
+package game.model;
 
-/**
- * @author ruslan.gramatic
- */
-public class RoomDto {
-    private Integer id;
+public class UpgradeEntity {
+
+    private int id;
     private String name;
     private String description;
 
-    public RoomDto() {}
-
-    public RoomDto(Integer id, String name, String description) {
+    public UpgradeEntity(int id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
     }
 
-    public Integer getId() {
+    public UpgradeEntity() {
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -42,7 +41,7 @@ public class RoomDto {
 
     @Override
     public String toString() {
-        return "RoomDto{" +
+        return "UpgradeEntity{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +

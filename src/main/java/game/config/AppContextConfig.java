@@ -1,17 +1,15 @@
 package game.config;
 
 import game.controller.RoomController;
+import game.controller.UpgradeController;
 import game.controller.UserController;
 import game.controller.impl.RoomControllerImpl;
+import game.controller.impl.UpgradeControllerImpl;
 import game.controller.impl.UserControllerImpl;
-import game.repository.dao.RoomDao;
-import game.repository.dao.UserDao;
-import game.repository.dao.impl.RoomDaoImpl;
-import game.repository.dao.impl.UserDaoImpl;
-import game.service.RoomService;
-import game.service.UserService;
-import game.service.impl.RoomServiceImpl;
-import game.service.impl.UserServiceImpl;
+import game.repository.dao.*;
+import game.repository.dao.impl.*;
+import game.service.*;
+import game.service.impl.*;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.HandlerList;
@@ -84,13 +82,23 @@ public class AppContextConfig {
 
     private ResourceConfig getResourceConfig() {
         return new ResourceConfig() {{
-            packages("game");
+            packages(true,"game");
             register(new AbstractBinder() {
                 @Override
                 protected void configure () {
                     bindAsContract(RoomDaoImpl.class).to(RoomDao.class);
                     bindAsContract(RoomServiceImpl.class).to(RoomService.class);
                     bindAsContract(RoomControllerImpl.class).to(RoomController.class);
+
+                    bindAsContract(UpgradeDaoImpl.class).to(UpgradeDao.class);
+                    bindAsContract(UpgradeServiceImpl.class).to(UpgradeService.class);
+                    bindAsContract(UpgradeControllerImpl.class).to(UpgradeController.class);
+
+                    bindAsContract(UpgradeBuildingDaoImpl.class).to(UpgradeBuildingDao.class);
+                    bindAsContract(UpgradeBuildingServiceImpl.class).to(UpgradeBuildingService.class);
+
+                    bindAsContract(AccountUpgradeDaoImpl.class).to(AccountUpgradeDao.class);
+                    bindAsContract(AccountUpgradeServiceImpl.class).to(AccountUpgradeService.class);
 
                     bindAsContract(UserDaoImpl.class).to(UserDao.class);
                     bindAsContract(UserServiceImpl.class).to(UserService.class);

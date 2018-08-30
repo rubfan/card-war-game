@@ -16,4 +16,16 @@ public class CardImpactDto {
     private Map<Integer, Float> p2UpgradeAmountMap;
     private Map<Integer, Float> necessaryBuildingAmountMap;
     private Map<Integer, Float> necessaryUpgradeAmountMap;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public Map<Integer, Float> getP1UpgradeAmountMap() {
+        return p1UpgradeAmountMap;
+    }
+
+    public Map<Integer, Float> getP2UpgradeAmountMap() {
+        return p2UpgradeAmountMap;
+    }
 }
