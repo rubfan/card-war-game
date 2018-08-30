@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface ResourceDao {
     List<ResourceEntity> getAllResourceList();
+
+    ResourceEntity getResource(int resourceId);
 }
