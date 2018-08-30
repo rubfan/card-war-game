@@ -1,6 +1,7 @@
 package game.service.impl;
 
 import game.dto.CardDto;
+import game.repository.dao.CardDao;
 import game.service.CardService;
 
 import javax.inject.Inject;
