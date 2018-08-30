@@ -18,9 +18,9 @@ public class BuildingServiceImpl implements BuildingService {
         final List<BuildingDto> buildings = new LinkedList<>();
         buildingDao.getAllBuildingList().forEach(buildingEntity -> {
             buildings.add(new BuildingDto()){{
-                setId(buildingEntity.setId());
-                setName(buildingEntity.setName());
-                setDescription(buildingEntity.setDescription());
+                setId(buildingEntity.getId());
+                setName(buildingEntity.getName());
+                setDescription(buildingEntity.getDescription());
             }});
         });
         return buildings;
