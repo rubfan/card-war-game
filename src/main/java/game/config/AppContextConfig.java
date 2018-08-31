@@ -1,8 +1,10 @@
 package game.config;
 
+import game.controller.AccountUpgradeController;
 import game.controller.RoomController;
 import game.controller.UpgradeController;
 import game.controller.UserController;
+import game.controller.impl.AccountUpgradeControllerImpl;
 import game.controller.impl.RoomControllerImpl;
 import game.controller.impl.UpgradeControllerImpl;
 import game.controller.impl.UserControllerImpl;
@@ -99,8 +101,10 @@ public class AppContextConfig {
 
                     bindAsContract(AccountUpgradeDaoImpl.class).to(AccountUpgradeDao.class);
                     bindAsContract(AccountUpgradeServiceImpl.class).to(AccountUpgradeService.class);
+                    bindAsContract(AccountUpgradeControllerImpl.class).to(AccountUpgradeController.class);
 
-                    bindAsContract(UserDaoImpl.class).to(UserDao.class);
+
+                        bindAsContract(UserDaoImpl.class).to(UserDao.class);
                     bindAsContract(UserServiceImpl.class).to(UserService.class);
                     bindAsContract(UserControllerImpl.class).to(UserController.class);
                 }

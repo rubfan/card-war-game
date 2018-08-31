@@ -37,6 +37,11 @@ public class AccountUpgradeServiceImpl implements AccountUpgradeService {
     }
 
     @Override
+    public List<AccountUpgradeDto> getAccountUpgrades(int accountId) {
+        return getAccountUpgrades(new String[]{"id"}, new Object[]{accountId});
+    }
+
+    @Override
     public List<UpgradeDto> getUpgrades(AccountDto accountDto){
         List<UpgradeEntity> upgradeEntityList = accountUpgradeDao.getUpgrades(new String[]{"account_upgrade.account_id"}, new Object[]{accountDto.getId()});
         List<UpgradeDto> res = new ArrayList<>();
@@ -88,9 +93,11 @@ public class AccountUpgradeServiceImpl implements AccountUpgradeService {
     }
 
     @Override
-    public void onApplyCard(CardImpactDto cardImpactDto, AccountDto currentPlayer, AccountDto enemyPlayer) {
-        setAccountUpgrades(cardImpactDto.getP1UpgradeAmountMap(), currentPlayer);
-        setAccountUpgrades(cardImpactDto.getP2UpgradeAmountMap(), enemyPlayer);
+    public void onApplyCard(List<CardImpactDto> cardImpactDtoList, AccountDto currentPlayer, AccountDto enemyPlayer) {
+        for (CardImpactDto cardImpactDto :cardImpactDtoList) {
+            setAccountUpgrades(cardImpactDto.getP1UpgradeAmountMap(), currentPlayer);
+            setAccountUpgrades(cardImpactDto.getP2UpgradeAmountMap(), enemyPlayer);
+        }
     }
 
     @Override

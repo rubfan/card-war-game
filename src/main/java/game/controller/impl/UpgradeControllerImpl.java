@@ -22,7 +22,7 @@ import javax.ws.rs.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Path("/upg")
+@Path("/upgrade")
 public class UpgradeControllerImpl {
 
     @Inject

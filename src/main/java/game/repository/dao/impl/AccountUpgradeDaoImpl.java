@@ -38,7 +38,7 @@ public class AccountUpgradeDaoImpl implements AccountUpgradeDao {
 
     @Override
     public List<AccountUpgradeEntity> getAccountUpgrades(String[] fieldName, Object[] fieldValues) {
-        StringBuilder query = new StringBuilder("select id, account_id, building_upgrade_id from account_upgrade");
+        StringBuilder query = new StringBuilder("select id, account_id, upgrade_id from account_upgrade");
         if (fieldName == null)
             return loadAccountUpgradeList(query.toString());
         query.append(" where ");

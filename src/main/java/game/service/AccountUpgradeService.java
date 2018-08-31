@@ -9,6 +9,8 @@ public interface AccountUpgradeService {
 
     List<AccountUpgradeDto> getAccountUpgrades(AccountDto accountDto);
 
+    List<AccountUpgradeDto> getAccountUpgrades(int accountId);
+
     List<UpgradeDto> getUpgrades(AccountDto accountDto);
 
     List<UpgradeBuildingDto> getUpgradesBuildings(String[] fieldName, Object[] fieldValues);
@@ -19,7 +21,7 @@ public interface AccountUpgradeService {
 
     void eraseAccountUpgrade(AccountRoomDto accountRoomDto);
 
-    void onApplyCard(CardImpactDto cardImpactDto, AccountDto currentPlayer, AccountDto enemyPlayer);
+    void onApplyCard(List<CardImpactDto> cardImpactDtoList, AccountDto currentPlayer, AccountDto enemyPlayer);
 
     void onGameOver(AccountRoomDto accountRoomDto);
 }
