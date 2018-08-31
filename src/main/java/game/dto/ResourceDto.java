@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-package game.dto;
-
-/**
- * @author ruslan.gramatic
- */
-public class ResourceDto {
-    private Integer id;
-    private String name;
-    private String description;
-}
-=======
 package game.dto;
 
 /**
@@ -53,4 +41,3 @@ public class ResourceDto {
                 '}';
     }
 }
->>>>>>> 91d6f6686cd30cb97a1f73b6f5c03600d5adbc0f

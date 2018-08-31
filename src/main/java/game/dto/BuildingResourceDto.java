@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-package game.dto;
-
-/**
- * @author ruslan.gramatic
- */
-public class BuildingResourceDto {
-    private Integer resourceId;
-    private Float numPerMin;
-}
-=======
 package game.dto;
 
 /**
@@ -42,4 +31,3 @@ public class BuildingResourceDto {
                 '}';
     }
 }
->>>>>>> 91d6f6686cd30cb97a1f73b6f5c03600d5adbc0f

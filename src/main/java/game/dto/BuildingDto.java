@@ -1,22 +1,3 @@
-<<<<<<< HEAD
-package game.dto;
-
-import java.util.List;
-
-/**
- * @author ruslan.gramatic
- */
-public class BuildingDto {
-    private Integer id;
-    private String name;
-    private String description;
-    private List<BuildingResourceDto> buildingProductList;
-
-    public Integer getId() {
-        return id;
-    }
-}
-=======
 package game.dto;
 
 import java.util.List;
@@ -75,4 +56,3 @@ public class BuildingDto {
     }
 
 }
->>>>>>> 91d6f6686cd30cb97a1f73b6f5c03600d5adbc0f
