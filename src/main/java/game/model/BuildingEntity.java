@@ -1,24 +1,22 @@
-<<<<<<< HEAD
-package game.dto;
+package game.model;
 
-/**
- * @author ruslan.gramatic
- */
-public class ResourceDto {
+import java.io.Serializable;
+
+public class BuildingEntity implements Serializable {
+
     private Integer id;
     private String name;
     private String description;
-}
-=======
-package game.dto;
 
-/**
- * @author ruslan.gramatic
- */
-public class ResourceDto {
-    private Integer id;
-    private String name;
-    private String description;
+    public BuildingEntity (Integer id, String name, String description){
+        this.id = id;
+        this.name = name;
+        this.description = description;
+    }
+
+    public BuildingEntity() {
+
+    }
 
     public Integer getId() {
         return id;
@@ -46,11 +44,10 @@ public class ResourceDto {
 
     @Override
     public String toString() {
-        return "ResourceDto{" +
+        return "BuildingEntity{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 '}';
     }
 }
->>>>>>> 91d6f6686cd30cb97a1f73b6f5c03600d5adbc0f
