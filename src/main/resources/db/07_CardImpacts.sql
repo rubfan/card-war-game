@@ -1,5 +1,5 @@
 INSERT INTO `Card_Impact`
-    (`id`  AUTO_INCREMENT, `card_id``card_group_id`,
+    (`id`, `card_id`, `card_group_id`,
     `p1_building_id`, `p2_building_id`,
     `p1_building_number`, `p2_building_number`,
     `p1_resource_id`, `p2_resource_id`,
@@ -9,4 +9,6 @@ INSERT INTO `Card_Impact`
     `necessary_building_id`, `necessary_upgrade_id`,
     `necessary_building_number`, `necessary_upgrade_number`)
 VALUES
-    
+    (1,1,1,1,NULL,2,NULL ,1,NULL ,100,NULL ,NULL ,NULL ,NULL ,NULL ,NULL ,NULL ,NULL ,NULL ),
+    (2,1,1,2,NULL,3,NULL ,2,NULL ,10,NULL ,NULL ,NULL ,NULL ,NULL ,NULL ,NULL ,NULL ,NULL ),
+    (3,2,1,1,NULL,1,NULL ,5,NULL ,20,NULL ,NULL ,NULL ,NULL ,NULL ,NULL ,NULL ,NULL ,NULL );

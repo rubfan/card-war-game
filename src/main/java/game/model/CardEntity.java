@@ -6,7 +6,7 @@ public class CardEntity implements Serializable {
     private Integer id;
     private String name;
     private String description;
-
+    private CardImpactEntity cardImpactEntity;
 
     public CardEntity() {}
 
@@ -40,6 +40,13 @@ public class CardEntity implements Serializable {
         this.description = description;
     }
 
+    public CardImpactEntity getCardImpactEntity() {
+        return cardImpactEntity;
+    }
+
+    public void setCardImpactEntity(CardImpactEntity cardImpactEntity) {
+        this.cardImpactEntity = cardImpactEntity;
+    }
 
     @Override
     public String toString() {
@@ -47,6 +54,7 @@ public class CardEntity implements Serializable {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
+                ", cardImpactEntity=" + cardImpactEntity +
                 '}';
     }
 }

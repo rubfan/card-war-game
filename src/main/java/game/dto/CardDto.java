@@ -8,8 +8,6 @@ public class CardDto {
     private String name;
     private String description;
     private CardImpactDto cardImpactDto;
-    //Todo: CardImpactDto or CardGroupDto?
-    //Used to be "private CardImpactDto cardGroup;"
 
     public CardDto() {}
 
