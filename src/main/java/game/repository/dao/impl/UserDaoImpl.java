@@ -37,8 +37,12 @@ public class UserDaoImpl implements UserDao {
             protected void executeQuery(Statement statement, Connection connection) throws SQLException {
 
                 PreparedStatement pstmt = connection.prepareStatement(
-                        ""
-                );// TODO: Updates Room where user was
+                        "SELECT room_id FROM Account " +
+                                "JOIN User ON User.id=Account.user_id" +
+                                "SET room_id=NULL" +
+                                "WHERE user.token = ?; ");// TODO: Updates Room where user was
+                pstmt.setString(1, token);
+                pstmt.executeUpdate();
             }
         }.run();
     }

@@ -20,23 +20,14 @@ public class AccountDaoImpl implements AccountDao {
         return new QueryHelper<AccountEntity>() {
             protected void executeQuery (Statement statement, Connection connection) throws SQLException {
                 PreparedStatement pstmt = connection.prepareStatement(
-                        "SELECT user_id FROM Account JOIN User WHERE user.id=account.user_id;"
-                );
+                        "SELECT * FROM Account WHERE user_id = ?");
+                pstmt.setInt(1, accountId);
                 ResultSet rs = pstmt.executeQuery();
-//                if(rs.next()) {
-//                    returnResult(new AccountEntity(rs.getInt("id"),,rs.getInt("room_id"),rs.getDate("start_game_time")));
-//                }
+                if(rs.next()) {
+                    returnResult(getAccount(accountId));
+                }
             }
         }.run();
     }
 
-    @Override
-    public AccountEntity setUserId(Integer user_id) { return null;
-//        return new QueryHelper<AccountEntity>(){
-//            protected void executeQuery (Statement statement, Connection connection) throws SQLException {
-//                PreparedStatement preparedStatement= connection.prepareStatement("INSERT INTO Account(user_id) VALUES(?);");
-//                preparedStatement.setInt(1, user_id);
-//
-//                }}.run();
-    }
 }

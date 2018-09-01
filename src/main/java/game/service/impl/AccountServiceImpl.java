@@ -1,6 +1,7 @@
 package game.service.impl;
 
 import game.dto.AccountDto;
+import game.model.AccountEntity;
 import game.repository.dao.AccountDao;
 import game.service.AccountService;
 
@@ -12,6 +13,12 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public AccountDto getAccount(Integer accountId) {
-        return null;
-    }
+            AccountEntity accountEntity = accountDao.getAccount(accountId);
+
+            return new AccountDto(
+                    accountEntity.getId(),
+                    accountEntity.getUser(),
+                    accountEntity.getRoom(),
+                    accountEntity.getStartGameTime());
+           }
 }

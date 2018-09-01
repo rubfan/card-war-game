@@ -49,8 +49,9 @@ public class UserControllerImpl implements UserController {
             Cookie preCookie = new Cookie("token", "", "/", "", 1);
             NewCookie newCookie = new NewCookie(preCookie, "Deleted cookie and logged out", -1, false);
             return Response.ok().cookie(newCookie).build();
-        }
-        return Response.ok().build();
+        } else
+            return Response.noContent().build();
+
     }
 
     @POST

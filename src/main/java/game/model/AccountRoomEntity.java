@@ -2,7 +2,9 @@ package game.model;
 
 import game.dto.AccountDto;
 
-public class AccountRoomEntity {
+import java.io.Serializable;
+
+public class AccountRoomEntity implements Serializable {
     private Integer roomId;
     private AccountDto account1;
     private AccountDto account2;

@@ -31,6 +31,13 @@ public class RoomServiceImpl implements RoomService {
 
     public List<AccountRoomDto> getAccountRoomList(){
         List<AccountRoomDto> dtoRooms = new LinkedList<>();
+        roomDao.getAccountRoomList().forEach(accountRoomEntity -> {
+            dtoRooms.add(new AccountRoomDto(){{
+                setId(accountRoomEntity.getRoomId());
+                setAccount1(accountRoomEntity.getAccount1());
+                setAccount2(accountRoomEntity.getAccount2());
+            }});
+        });
         return dtoRooms;
 
     }

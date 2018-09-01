@@ -13,8 +13,8 @@ import java.util.List;
 
 public class MessageDaoImpl implements MessageDao {
 
-//    @Override
-//    public List<MessageEntity> getMessageList() {
+    public List<MessageEntity> getMessageList() {
+        return null;
 //        return new QueryHelper<List<MessageEntity>>() {
 //            protected void executeQuery(Statement statement, Connection connection) throws SQLException {
 //                List<MessageEntity> messages = new LinkedList<>();
@@ -33,7 +33,7 @@ public class MessageDaoImpl implements MessageDao {
 //                returnResult(messages);
 //            }
 //        }.run();
-//    }
+    }
 
     @Override
     public String sendMessage(MessageEntity message, String accountId) {

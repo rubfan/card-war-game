@@ -39,12 +39,14 @@ public class RoomControllerImpl implements RoomController {
     @GET
     @Path("account/list")
     public List<AccountRoomDto> getAccountRoomList() {
-//        List<AccountRoomDto> accountRoomDtoList = roomService
-        return Collections.emptyList(); //TODO: we need to return this list with correct data
+        List<AccountRoomDto> accountRoomDtoList = roomService.getAccountRoomList();
+        Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, accountRoomDtoList.toString());
+        return accountRoomDtoList; //TODO: we need to return this list with correct data
+        //TODO: DONE?
     }
 
     @GET
-    @Path("{roomId}/account/{accountId}/join")
+    @Path("/join/{roomId}/{accountId}")
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public Response joinRoom(@PathParam("roomId") Integer roomId, @PathParam("accountId") Integer accountId) {
         Logger.getLogger(this.getClass().getName()).log(Level.SEVERE,"room=" + roomId);
@@ -53,7 +55,7 @@ public class RoomControllerImpl implements RoomController {
     }
 
     @GET
-    @Path("{roomId}/account/{accountId}/leave")
+    @Path("/leave/{roomId}/{accountId}")
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public Response leaveRoom(@PathParam("roomId") Integer roomId, @PathParam("accountId") Integer accountId) {
         Logger.getLogger(this.getClass().getName()).log(Level.SEVERE,"room=" + roomId);

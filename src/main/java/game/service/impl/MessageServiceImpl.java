@@ -18,15 +18,16 @@ public class MessageServiceImpl implements MessageService {
 //    @Override
 //    public List<MessageDto> getMessageList() {
 //        final List<MessageDto> messages = new LinkedList<>();
-//        messageDao.getMessageList().forEach(messageEntity ->
-//        messages.add(new MessageDto(){{
-//            setId(messageEntity.getId());
-//            setText(messageEntity.getText());
-//            setFromAccountId(messageEntity.getFromAccountId());
-//            setToAccountId(messageEntity.getToAccountId());
-//            setTime(messageEntity.getTime());
-//        }}));
-//
+////        messageDao.getMessageList().forEach(messageEntity ->
+////        messages.add(new MessageDto(){{
+////            setId(messageEntity.getId());
+////            setText(messageEntity.getText());
+////            setFromAccountId(messageEntity.getFromAccountId());
+////            setToAccountId(messageEntity.getToAccountId());
+////            setTime(messageEntity.getTime());
+////        }}));
+////
+////        return messages;
 //        return messages;
 //    }
 

@@ -6,6 +6,7 @@ import game.controller.RoomController;
 import game.controller.UserController;
 import game.controller.impl.AccountControllerImpl;
 //import game.controller.impl.MessageControllerImpl;
+import game.controller.impl.MessageControllerImpl;
 import game.controller.impl.RoomControllerImpl;
 import game.controller.impl.UserControllerImpl;
 import game.repository.dao.AccountDao;
@@ -114,7 +115,7 @@ public class AppContextConfig {
 
                     bindAsContract(MessageDaoImpl.class).to(MessageDao.class);
                     bindAsContract(MessageServiceImpl.class).to(MessageService.class);
-//                    bindAsContract(MessageControllerImpl.class).to(MessageController.class);
+                    bindAsContract(MessageControllerImpl.class).to(MessageController.class);
 
                 }
             });
