@@ -9,15 +9,15 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import java.util.List;
 
-@Path("/achievement")
+@Path("/achievements")
 public class AchievementControllerImpl implements AchievementController {
 
     @Inject
     private AchievementService achievementService;
 
+    @Override
     @GET
     @Path("/list")
-    @Override
     public List<AchievementDto> getAllAchievementList() {
         return achievementService.getAllAchievementList();
     }
