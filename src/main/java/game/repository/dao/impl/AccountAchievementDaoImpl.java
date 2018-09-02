@@ -39,7 +39,7 @@ public class AccountAchievementDaoImpl implements AccountAchievementDao {
         new QueryHelper() {
             @Override
             protected void executeQuery(Statement statement, Connection connection) throws SQLException {
-                statement.executeQuery("delete * from Account_Achievement where account_id = " + accountId);
+                statement.executeUpdate("delete * from Account_Achievement where account_id = " + accountId);
             }
         }.run();
     }
