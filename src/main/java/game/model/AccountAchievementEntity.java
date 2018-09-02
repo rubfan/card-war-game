@@ -4,11 +4,13 @@ public class AccountAchievementEntity {
     private Integer id;
     private Integer account_id;
     private Integer achievement_id;
+    private Float number;
 
-    public AccountAchievementEntity(Integer id, Integer account_id, Integer achievement_id) {
+    public AccountAchievementEntity(Integer id, Integer account_id, Integer achievement_id, Float number) {
         this.id = id;
         this.account_id = account_id;
         this.achievement_id = achievement_id;
+        this.number = number;
     }
 
     public AccountAchievementEntity() {
@@ -38,12 +40,21 @@ public class AccountAchievementEntity {
         this.achievement_id = achievement_id;
     }
 
+    public Float getNumber() {
+        return number;
+    }
+
+    public void setNumber(Float number) {
+        this.number = number;
+    }
+
     @Override
     public String toString() {
         return "AccountAchievementEntity{" +
                 "id=" + id +
                 ", account_id=" + account_id +
                 ", achievement_id=" + achievement_id +
+                ", number=" + number +
                 '}';
     }
 }
