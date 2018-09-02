@@ -8,14 +8,6 @@ public class AccountAchievementDto {
     private Integer achievementId;
     private Float number;
 
-    public AccountAchievementDto(Integer achievementId, Float number) {
-        this.achievementId = achievementId;
-        this.number = number;
-    }
-
-    public AccountAchievementDto() {
-    }
-
     public Integer getAchievementId() {
         return achievementId;
     }
