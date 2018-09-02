@@ -8,15 +8,6 @@ public class AchievementDto {
     private String name;
     private String description;
 
-    public AchievementDto(Integer id, String name, String description) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-    }
-
-    public AchievementDto() {
-    }
-
     public Integer getId() {
         return id;
     }
