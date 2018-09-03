@@ -1,6 +1,7 @@
 package game.model;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.Map;
 
 public class CardImpactEntity implements Serializable {
@@ -15,7 +16,16 @@ public class CardImpactEntity implements Serializable {
     private Map<Integer, Float> necessaryBuildingAmountMap;
     private Map<Integer, Float> necessaryUpgradeAmountMap;
 
-    public CardImpactEntity() {}
+    public CardImpactEntity() {
+        p1BuildingAmountMap = new HashMap<>();
+        p2BuildingAmountMap = new HashMap<>();
+        p1ResourceAmountMap = new HashMap<>();
+        p2ResourceAmountMap = new HashMap<>();
+        p1UpgradeAmountMap = new HashMap<>();
+        p2UpgradeAmountMap = new HashMap<>();
+        necessaryBuildingAmountMap = new HashMap<>();
+        necessaryUpgradeAmountMap = new HashMap<>();
+    }
 
     public CardImpactEntity(Integer id, CardGroupEntity cardGroupEntity, Map<Integer, Float> p1BuildingAmountMap, Map<Integer, Float> p2BuildingAmountMap, Map<Integer, Float> p1ResourceAmountMap, Map<Integer, Float> p2ResourceAmountMap, Map<Integer, Float> p1UpgradeAmountMap, Map<Integer, Float> p2UpgradeAmountMap, Map<Integer, Float> necessaryBuildingAmountMap, Map<Integer, Float> necessaryUpgradeAmountMap) {
         this.id = id;

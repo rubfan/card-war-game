@@ -18,10 +18,10 @@ public class CardServiceImpl implements CardService {
     @Inject
     public CardDao cardDao;
 
-    public List<CardDto> getCardList() {
+    public List<CardDto> getAllCardList() {
         final List<CardDto> cards = new LinkedList<>();
         cardDao.getAllCardList().forEach(cardEntity -> {
-            cards.add(new CardDto() {{
+            cards.add(new CardDto(){{
                 setId(cardEntity.getId());
                 setName(cardEntity.getName());
                 setDescription(cardEntity.getDescription());

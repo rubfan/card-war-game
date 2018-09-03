@@ -1,5 +1,6 @@
 package game.dto;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -17,7 +18,17 @@ public class CardImpactDto {
     private Map<Integer, Float> necessaryBuildingAmountMap;
     private Map<Integer, Float> necessaryUpgradeAmountMap;
 
-    public CardImpactDto() {}
+    public CardImpactDto() {
+        p1BuildingAmountMap = new HashMap<>();
+        p2BuildingAmountMap = new HashMap<>();
+        p1ResourceAmountMap = new HashMap<>();
+        p2ResourceAmountMap = new HashMap<>();
+        p1UpgradeAmountMap = new HashMap<>();
+        p2UpgradeAmountMap = new HashMap<>();
+        necessaryBuildingAmountMap = new HashMap<>();
+        necessaryUpgradeAmountMap = new HashMap<>();
+
+    }
 
     public CardImpactDto(Integer id, CardGroupDto cardGroupDto, Map<Integer, Float> p1BuildingAmountMap, Map<Integer, Float> p2BuildingAmountMap, Map<Integer, Float> p1ResourceAmountMap, Map<Integer, Float> p2ResourceAmountMap, Map<Integer, Float> p1UpgradeAmountMap, Map<Integer, Float> p2UpgradeAmountMap, Map<Integer, Float> necessaryBuildingAmountMap, Map<Integer, Float> necessaryUpgradeAmountMap) {
         this.id = id;
