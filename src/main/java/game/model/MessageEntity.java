@@ -1,18 +1,16 @@
-package game.dto;
+package game.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-/**
- * @author ruslan.gramatic
- */
-public class MessageDto {
+public class MessageEntity implements Serializable {
     private Integer id;
     private String text;
     private Integer fromAccountId;
     private Integer toAccountId;
     private Date time;
 
-    public MessageDto(Integer id, String text, Integer fromAccountId, Integer toAccountId, Date time) {
+    public MessageEntity(Integer id, String text, Integer fromAccountId, Integer toAccountId, Date time) {
         this.id = id;
         this.text = text;
         this.fromAccountId = fromAccountId;
@@ -20,7 +18,7 @@ public class MessageDto {
         this.time = time;
     }
 
-    public MessageDto() {
+    public MessageEntity() {
     }
 
     public Integer getId() {
@@ -55,9 +53,7 @@ public class MessageDto {
         this.toAccountId = toAccountId;
     }
 
-    public Date getTime() {
-        return time;
-    }
+    public Date getTime() { return time;}
 
     public void setTime(Date time) {
         this.time = time;
@@ -65,7 +61,7 @@ public class MessageDto {
 
     @Override
     public String toString() {
-        return "MessageDto{" +
+        return "MessageEntity{" +
                 "id=" + id +
                 ", text='" + text + '\'' +
                 ", fromAccountId=" + fromAccountId +
@@ -74,5 +70,3 @@ public class MessageDto {
                 '}';
     }
 }
-
-

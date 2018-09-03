@@ -1,5 +1,6 @@
 package game.repository.dao;
 
+import game.model.AccountRoomEntity;
 import game.model.RoomEntity;
 
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.List;
  */
 public interface RoomDao {
     List<RoomEntity> getRoomList();
+    List<AccountRoomEntity> getAccountRoomList();
     void joinRoom(Integer roomId, Integer accountId);
     void leaveRoom(Integer roomId, Integer accountId);
 }
