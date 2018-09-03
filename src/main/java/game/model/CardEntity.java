@@ -7,16 +7,13 @@ public class CardEntity implements Serializable {
     private String name;
     private String description;
     private CardImpactEntity cardImpactEntity;
-    // TODO: CardImpactDto or CardImpactEntity?
-
 
     public CardEntity() {}
 
-    public CardEntity(Integer id, String name, String description, CardImpactEntity cardImpactEntity) {
+    public CardEntity(Integer id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.cardImpactEntity = cardImpactEntity;
     }
 
     public Integer getId() {

@@ -19,7 +19,7 @@ public class CardControllerImpl implements CardController {
     @Path("list")
     public List<CardDto> getAllCardList() {
 
-        List<CardDto> cardList = cardService.getCardList();
+         List<CardDto> cardList = cardService.getCardList();
         Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, cardList.toString());
         return cardList;
     }
