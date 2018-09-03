@@ -5,7 +5,6 @@ import game.controller.MessageController;
 import game.controller.RoomController;
 import game.controller.UserController;
 import game.controller.impl.AccountControllerImpl;
-//import game.controller.impl.MessageControllerImpl;
 import game.controller.impl.MessageControllerImpl;
 import game.controller.impl.RoomControllerImpl;
 import game.controller.impl.UserControllerImpl;
@@ -23,6 +22,7 @@ import game.service.RoomService;
 import game.service.UserService;
 import game.service.impl.AccountServiceImpl;
 import game.service.impl.MessageServiceImpl;
+
 import game.service.impl.RoomServiceImpl;
 import game.service.impl.UserServiceImpl;
 import org.eclipse.jetty.server.Handler;
@@ -104,7 +104,9 @@ public class AppContextConfig {
                     bindAsContract(RoomDaoImpl.class).to(RoomDao.class);
                     bindAsContract(RoomServiceImpl.class).to(RoomService.class);
                     bindAsContract(RoomControllerImpl.class).to(RoomController.class);
-
+                    bindAsContract(ResourceControllerImpl.class).to(ResourceController.class);
+                    bindAsContract(ResourceServiceImpl.class).to(ResourceService.class);
+                    bindAsContract(ResourceDaoImpl.class).to(ResourceDao.class);
                     bindAsContract(UserDaoImpl.class).to(UserDao.class);
                     bindAsContract(UserServiceImpl.class).to(UserService.class);
                     bindAsContract(UserControllerImpl.class).to(UserController.class);
