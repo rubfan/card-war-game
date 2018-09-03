@@ -1,30 +1,12 @@
 package game.config;
 
-import game.controller.AccountController;
-import game.controller.MessageController;
-import game.controller.RoomController;
-import game.controller.UserController;
-import game.controller.impl.AccountControllerImpl;
-import game.controller.impl.MessageControllerImpl;
-import game.controller.impl.RoomControllerImpl;
-import game.controller.impl.UserControllerImpl;
-import game.repository.dao.AccountDao;
-import game.repository.dao.MessageDao;
-import game.repository.dao.RoomDao;
-import game.repository.dao.UserDao;
-import game.repository.dao.impl.AccountDaoImpl;
-import game.repository.dao.impl.MessageDaoImpl;
-import game.repository.dao.impl.RoomDaoImpl;
-import game.repository.dao.impl.UserDaoImpl;
-import game.service.AccountService;
-import game.service.MessageService;
-import game.service.RoomService;
-import game.service.UserService;
-import game.service.impl.AccountServiceImpl;
-import game.service.impl.MessageServiceImpl;
+import game.controller.*;
+import game.controller.impl.*;
+import game.repository.dao.*;
+import game.repository.dao.impl.*;
+import game.service.*;
+import game.service.impl.*;
 
-import game.service.impl.RoomServiceImpl;
-import game.service.impl.UserServiceImpl;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.HandlerList;
