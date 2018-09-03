@@ -11,7 +11,6 @@ import java.util.List;
  * @author ruslan.gramatic
  */
 public interface MessageController {
-    List<MessageDto> getMessageList();
-    Response sendMessage(MessageDto message, Cookie cookie);
-    List<MessageDto> getRoomMessageList(Cookie cookie);
+    Response sendMessage(MessageDto message, String accountId);
+    List<MessageDto> getRoomMessageList(String accountId1, String accountId2);
 }

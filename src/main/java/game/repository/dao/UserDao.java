@@ -1,5 +1,6 @@
 package game.repository.dao;
 
+import game.model.AccountEntity;
 import game.model.UserEntity;
 
 /**

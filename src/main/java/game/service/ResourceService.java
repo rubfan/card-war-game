@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface ResourceService {
     List<ResourceDto> getAllResourceList();
+
+    ResourceDto getResource(int resourceId);
 }

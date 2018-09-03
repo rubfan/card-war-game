@@ -1,29 +1,29 @@
-package game.dto;
+package game.model;
 
-import jersey.repackaged.com.google.common.collect.HashBasedTable;
+import game.dto.AccountDto;
 
-/**
- * @author ruslan.gramatic
- */
+import java.io.Serializable;
 
-public class AccountRoomDto {
+public class AccountRoomEntity implements Serializable {
     private Integer roomId;
     private AccountDto account1;
     private AccountDto account2;
-    public AccountRoomDto() {}
 
-
-    public AccountRoomDto(Integer roomId, AccountDto account1, AccountDto account2) {
+    public AccountRoomEntity(Integer roomId, AccountDto account1, AccountDto account2) {
         this.roomId = roomId;
         this.account1 = account1;
         this.account2 = account2;
     }
 
-    public Integer getId() {
+    public AccountRoomEntity() {
+
+    }
+
+    public Integer getRoomId() {
         return roomId;
     }
 
-    public void setId(Integer roomId) {
+    public void setRoomId(Integer roomId) {
         this.roomId = roomId;
     }
 
@@ -45,8 +45,8 @@ public class AccountRoomDto {
 
     @Override
     public String toString() {
-        return "RoomDto{" +
-                "id=" + roomId +
+        return "AccountRoomEntity{" +
+                "roomId=" + roomId +
                 ", account1=" + account1 +
                 ", account2=" + account2 +
                 '}';
