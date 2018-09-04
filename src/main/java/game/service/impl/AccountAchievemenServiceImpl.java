@@ -34,6 +34,6 @@ public class AccountAchievemenServiceImpl implements AccountAchievemenService {
 
     @Override
     public void updateAccountAchievementList(Integer accountId) {
-        accountAchievementDao.addAchievementToAccountAchievementList(accountId);
+        accountAchievementDao.updateAccountAchievementList(accountId);
     }
 }
