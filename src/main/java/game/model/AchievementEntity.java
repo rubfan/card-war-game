@@ -12,12 +12,6 @@ public class AchievementEntity implements Serializable {
     private String name;
     private String description;
 
-    public AchievementEntity(Integer id, String name, String description) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-    }
-
     public AchievementEntity() {
     }
 
