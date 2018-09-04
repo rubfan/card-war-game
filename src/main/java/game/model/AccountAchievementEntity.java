@@ -6,13 +6,6 @@ public class AccountAchievementEntity {
     private Integer achievement_id;
     private Float number;
 
-    public AccountAchievementEntity(Integer id, Integer account_id, Integer achievement_id, Float number) {
-        this.id = id;
-        this.account_id = account_id;
-        this.achievement_id = achievement_id;
-        this.number = number;
-    }
-
     public AccountAchievementEntity() {
     }
 
