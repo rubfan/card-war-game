@@ -46,9 +46,15 @@ public class AccountAchievementDaoImpl implements AccountAchievementDao {
 
     @Override
     public void updateAccountAchievementList(Integer accountId) {
-//        new QueryHelper() {
-//            @Override
-//            protected void executeQuery(Statement statement, Connection connection) throws SQLException {
+        new QueryHelper() {
+            @Override
+            protected void executeQuery(Statement statement, Connection connection) throws SQLException {
+
+            }
+        }.run();
+    }
+}
+
 //                if (statement.execute("select * from Account_Achievement where account_id = " + accountId +
 //                "and achievement_id = " + achievementId)){
 //                    statement.executeUpdate("update Account_Achievement set number = number + 1 where " +
@@ -57,7 +63,3 @@ public class AccountAchievementDaoImpl implements AccountAchievementDao {
 //                    statement.executeUpdate("insert into Account_Achievement (account_id, achievement_id, number) " +
 //                            "values (" + accountId + ", " + achievementId + ", " + 1 + ")");
 //                }
-//            }
-//        }.run();
-    }
-}
