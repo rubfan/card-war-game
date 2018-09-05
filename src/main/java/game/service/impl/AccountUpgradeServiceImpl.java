@@ -35,7 +35,7 @@ public class AccountUpgradeServiceImpl implements AccountUpgradeService {
 
     @Override
     public List<AccountUpgradeDto> getAccountUpgrades(AccountDto accountDto){
-        return getAccountUpgrades(new String[]{"id"}, new Object[]{accountDto.getId()});
+        return getAccountUpgrades(new String[]{"account_id"}, new Object[]{accountDto.getId()});
     }
 
     @Override
