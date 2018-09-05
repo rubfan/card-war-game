@@ -2,6 +2,8 @@ package game.controller.impl;
 
 import game.controller.UserController;
 import game.dto.UserDto;
+import game.repository.dao.AccountDao;
+import game.repository.dao.impl.AccountDaoImpl;
 import game.service.UserService;
 
 import javax.inject.Inject;
@@ -47,8 +49,9 @@ public class UserControllerImpl implements UserController {
             Cookie preCookie = new Cookie("token", "", "/", "", 1);
             NewCookie newCookie = new NewCookie(preCookie, "Deleted cookie and logged out", -1, false);
             return Response.ok().cookie(newCookie).build();
-        }
-        return Response.ok().build();
+        } else
+            return Response.noContent().build();
+
     }
 
     @POST
@@ -65,4 +68,3 @@ public class UserControllerImpl implements UserController {
         return Response.status(201).entity("User").cookie(newCookie).build();
     }
 }
-

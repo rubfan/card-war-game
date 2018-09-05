@@ -1,6 +1,7 @@
 package game.service.impl;
 
 import game.dto.ResourceDto;
+import game.model.ResourceEntity;
 import game.repository.dao.ResourceDao;
 import game.service.ResourceService;
 
@@ -16,13 +17,13 @@ public class ResourceServiceImpl implements ResourceService {
     @Override
     public List<ResourceDto> getAllResourceList() {
         final List<ResourceDto> resources = new LinkedList<>();
-        resourseDao.getAllResourceList().forEach(roomEntity -> {
-            resources.add(new ResourceDto(){{
-                setId(roomEntity.getId());
-                setName(roomEntity.getName());
-                setDescription(roomEntity.getDescription());
-            }});
+        resourseDao.getAllResourceList().forEach(resourceEntity ->  {
+            resources.add(new ResourceDto(resourceEntity));
         });
         return resources;
+    }
+
+    public ResourceDto getResource(int resourceId) {
+        return new ResourceDto(resourseDao.getResource(resourceId));
     }
 }

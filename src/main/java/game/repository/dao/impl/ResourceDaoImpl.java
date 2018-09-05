@@ -4,10 +4,7 @@ import game.model.ResourceEntity;
 import game.repository.dao.ResourceDao;
 import game.repository.helper.QueryHelper;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -31,4 +28,21 @@ public class ResourceDaoImpl implements ResourceDao {
             }
         }.run();
     }
+
+    public ResourceEntity getResource(int resourceId) {
+        return new QueryHelper<ResourceEntity>() {
+            @Override
+            protected void executeQuery(Statement statement, Connection connection) throws SQLException {
+                ResourceEntity resourceEntity = new ResourceEntity();
+                PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM resource WHERE id = ?;");
+                preparedStatement.setInt(1, resourceId);
+                ResultSet rs = preparedStatement.executeQuery();
+                while(rs.next()) {
+                    resourceEntity.setId(rs.getInt("id"));
+                    resourceEntity.setName(rs.getString("name"));
+                    resourceEntity.setDescription(rs.getString("description"));
+                }
+                returnResult(resourceEntity);
+            }
+        }.run();    }
 }

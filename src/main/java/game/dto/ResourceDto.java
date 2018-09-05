@@ -1,5 +1,7 @@
 package game.dto;
 
+import game.model.ResourceEntity;
+
 /**
  * @author ruslan.gramatic
  */
@@ -7,6 +9,15 @@ public class ResourceDto {
     private Integer id;
     private String name;
     private String description;
+
+    public ResourceDto (ResourceEntity resourceEntity) {
+        this.id = resourceEntity.getId();
+        this.name = resourceEntity.getName();
+        this.description = resourceEntity.getDescription();
+    }
+
+    public ResourceDto () {
+    }
 
     public Integer getId() {
         return id;

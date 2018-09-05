@@ -1,17 +1,12 @@
 package game.config;
 
-import game.controller.AccountUpgradeController;
-import game.controller.RoomController;
-import game.controller.UpgradeController;
-import game.controller.UserController;
-import game.controller.impl.AccountUpgradeControllerImpl;
-import game.controller.impl.RoomControllerImpl;
-import game.controller.impl.UpgradeControllerImpl;
-import game.controller.impl.UserControllerImpl;
+import game.controller.*;
+import game.controller.impl.*;
 import game.repository.dao.*;
 import game.repository.dao.impl.*;
 import game.service.*;
 import game.service.impl.*;
+
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.HandlerList;
@@ -84,13 +79,27 @@ public class AppContextConfig {
 
     private ResourceConfig getResourceConfig() {
         return new ResourceConfig() {{
-            packages(true,"game");
+            packages("game");
             register(new AbstractBinder() {
                 @Override
                 protected void configure () {
                     bindAsContract(RoomDaoImpl.class).to(RoomDao.class);
                     bindAsContract(RoomServiceImpl.class).to(RoomService.class);
                     bindAsContract(RoomControllerImpl.class).to(RoomController.class);
+                    bindAsContract(ResourceControllerImpl.class).to(ResourceController.class);
+                    bindAsContract(ResourceServiceImpl.class).to(ResourceService.class);
+                    bindAsContract(ResourceDaoImpl.class).to(ResourceDao.class);
+                    bindAsContract(UserDaoImpl.class).to(UserDao.class);
+                    bindAsContract(UserServiceImpl.class).to(UserService.class);
+                    bindAsContract(UserControllerImpl.class).to(UserController.class);
+
+                    bindAsContract(AccountDaoImpl.class).to(AccountDao.class);
+                    bindAsContract(AccountServiceImpl.class).to(AccountService.class);
+                    bindAsContract(AccountControllerImpl.class).to(AccountController.class);
+
+                    bindAsContract(MessageDaoImpl.class).to(MessageDao.class);
+                    bindAsContract(MessageServiceImpl.class).to(MessageService.class);
+                    bindAsContract(MessageControllerImpl.class).to(MessageController.class);
 
                     bindAsContract(UpgradeDaoImpl.class).to(UpgradeDao.class);
                     bindAsContract(UpgradeServiceImpl.class).to(UpgradeService.class);
@@ -104,9 +113,6 @@ public class AppContextConfig {
                     bindAsContract(AccountUpgradeControllerImpl.class).to(AccountUpgradeController.class);
 
 
-                        bindAsContract(UserDaoImpl.class).to(UserDao.class);
-                    bindAsContract(UserServiceImpl.class).to(UserService.class);
-                    bindAsContract(UserControllerImpl.class).to(UserController.class);
                 }
             });
         }};
