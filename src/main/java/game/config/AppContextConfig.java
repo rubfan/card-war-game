@@ -104,9 +104,11 @@ public class AppContextConfig {
                     bindAsContract(RoomDaoImpl.class).to(RoomDao.class);
                     bindAsContract(RoomServiceImpl.class).to(RoomService.class);
                     bindAsContract(RoomControllerImpl.class).to(RoomController.class);
+
                     bindAsContract(ResourceControllerImpl.class).to(ResourceController.class);
                     bindAsContract(ResourceServiceImpl.class).to(ResourceService.class);
                     bindAsContract(ResourceDaoImpl.class).to(ResourceDao.class);
+
                     bindAsContract(UserDaoImpl.class).to(UserDao.class);
                     bindAsContract(UserServiceImpl.class).to(UserService.class);
                     bindAsContract(UserControllerImpl.class).to(UserController.class);
