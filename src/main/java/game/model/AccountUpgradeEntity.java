@@ -4,6 +4,7 @@ public class AccountUpgradeEntity {
     Integer id;
     Integer accountId;
     Integer upgradeId;
+    Integer number;
 
     public AccountUpgradeEntity() {
     }
@@ -32,12 +33,21 @@ public class AccountUpgradeEntity {
         this.upgradeId = upgradeId;
     }
 
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
+
     @Override
     public String toString() {
         return "AccountUpgradeEntity{" +
                 "id=" + id +
                 ", accountId=" + accountId +
                 ", upgradeId=" + upgradeId +
+                ", number=" + number +
                 '}';
     }
 }

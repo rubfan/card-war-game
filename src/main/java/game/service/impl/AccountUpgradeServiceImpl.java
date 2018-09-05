@@ -8,6 +8,7 @@ import game.repository.dao.AccountUpgradeDao;
 import game.service.AccountUpgradeService;
 import javax.inject.Inject;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -26,6 +27,7 @@ public class AccountUpgradeServiceImpl implements AccountUpgradeService {
             accountUpgradeDto.setId(accountUpgradeEntity.getId());
             accountUpgradeDto.setAccountId(accountUpgradeEntity.getAccountId());
             accountUpgradeDto.setUpgradeId(accountUpgradeEntity.getUpgradeId());
+            accountUpgradeDto.setNumber(accountUpgradeEntity.getNumber());
             res.add(accountUpgradeDto);
         }
         return res;
@@ -38,50 +40,51 @@ public class AccountUpgradeServiceImpl implements AccountUpgradeService {
 
     @Override
     public List<AccountUpgradeDto> getAccountUpgrades(int accountId) {
-        return getAccountUpgrades(new String[]{"id"}, new Object[]{accountId});
+        return getAccountUpgrades(new String[]{"account_id"}, new Object[]{accountId});
     }
 
     @Override
-    public List<UpgradeDto> getUpgrades(AccountDto accountDto){
-        List<UpgradeEntity> upgradeEntityList = accountUpgradeDao.getUpgrades(new String[]{"account_upgrade.account_id"}, new Object[]{accountDto.getId()});
-        List<UpgradeDto> res = new ArrayList<>();
-        for (UpgradeEntity upgradeEntity : upgradeEntityList){
+    public Map<UpgradeDto, Integer> getUpgrades(AccountDto accountDto){
+        Map<UpgradeEntity, Integer> upgradeEntityList = accountUpgradeDao.getUpgrades(new String[]{"account_upgrade.account_id"}, new Object[]{accountDto.getId()});
+        Map<UpgradeDto, Integer> res = new HashMap<>();
+        for (Map.Entry<UpgradeEntity, Integer> upgradeEntity : upgradeEntityList.entrySet()){
             UpgradeDto upgradeDto = new UpgradeDto();
-            upgradeDto.setId(upgradeEntity.getId());
-            upgradeDto.setName(upgradeEntity.getName());
-            upgradeDto.setDescription(upgradeEntity.getDescription());
-            res.add(upgradeDto);
+            upgradeDto.setId(upgradeEntity.getKey().getId());
+            upgradeDto.setName(upgradeEntity.getKey().getName());
+            upgradeDto.setDescription(upgradeEntity.getKey().getDescription());
+            res.put(upgradeDto, upgradeEntity.getValue());
         }
         return res;
     }
 
     @Override
-    public List<UpgradeBuildingDto> getUpgradesBuildings(String[] fieldName, Object[] fieldValues) {
-        List<UpgradeBuildingEntity> upgradeBuildingEntityList= accountUpgradeDao.getUpgradesBuildings(fieldName, fieldValues);
-        List<UpgradeBuildingDto> res = new ArrayList<>();
-        for (UpgradeBuildingEntity upgradeBuildingEntity : upgradeBuildingEntityList){
+    public Map<UpgradeBuildingDto, Integer> getUpgradesBuildings(String[] fieldName, Object[] fieldValues) {
+        Map<UpgradeBuildingEntity, Integer> upgradeBuildingEntityList= accountUpgradeDao.getUpgradesBuildings(fieldName, fieldValues);
+        Map<UpgradeBuildingDto, Integer> res = new HashMap<>();
+        for (Map.Entry<UpgradeBuildingEntity, Integer> upgradeBuildingEntity : upgradeBuildingEntityList.entrySet()){
             UpgradeBuildingDto upgradeBuildingDto= new UpgradeBuildingDto();
-            upgradeBuildingDto.setId(upgradeBuildingEntity.getId());
-            upgradeBuildingDto.setBuildingId(upgradeBuildingEntity.getBuildingId());
-            upgradeBuildingDto.setUpgradeId(upgradeBuildingEntity.getUpgrageId());
-            upgradeBuildingDto.setPercent(upgradeBuildingEntity.getPercent());
-            res.add(upgradeBuildingDto);
+            upgradeBuildingDto.setId(upgradeBuildingEntity.getKey().getId());
+            upgradeBuildingDto.setBuildingId(upgradeBuildingEntity.getKey().getBuildingId());
+            upgradeBuildingDto.setUpgradeId(upgradeBuildingEntity.getKey().getUpgrageId());
+            upgradeBuildingDto.setPercent(upgradeBuildingEntity.getKey().getPercent());
+            res.put(upgradeBuildingDto, upgradeBuildingEntity.getValue());
         }
         return res;
     }
 
     @Override
-    public List<UpgradeBuildingDto> getUpgradesBuildings(BuildingDto buildingDto, AccountDto accountDto){
-        return getUpgradesBuildings(new String[]{"account_upgrade.id", "upgrade_building.building_id"},
+    public Map<UpgradeBuildingDto, Integer> getUpgradesBuildings(BuildingDto buildingDto, AccountDto accountDto){
+        return getUpgradesBuildings(new String[]{"account_upgrade.account_id", "upgrade_building.building_id"},
                                     new Object[]{accountDto.getId(), buildingDto.getId()});
     }
 
     @Override
     public float getTotalPercent(BuildingDto buildingDto, AccountDto accountDto){
-        List<UpgradeBuildingDto> upgradeBuildingDtoList = getUpgradesBuildings(buildingDto, accountDto);
+        Map<UpgradeBuildingDto, Integer> upgradeBuildingDtoList = getUpgradesBuildings(buildingDto, accountDto);
         float percent = 100;
-        for (UpgradeBuildingDto upgradeBuildingDto : upgradeBuildingDtoList){
-            percent  += upgradeBuildingDto.getPercent();
+        for (Map.Entry<UpgradeBuildingDto, Integer> upgradeBuildingDto : upgradeBuildingDtoList.entrySet()){
+            percent  += upgradeBuildingDto.getKey().getPercent() *
+                        upgradeBuildingDto.getValue();
         }
         return  percent;
     }
@@ -105,18 +108,18 @@ public class AccountUpgradeServiceImpl implements AccountUpgradeService {
           eraseAccountUpgrade(accountRoomDto);
     }
 
-    private void setAccountUpgrades(Map<Integer, Float> upgradeData , AccountDto player){
+    public void setAccountUpgrades(Map<Integer, Float> upgradeData , AccountDto player){
+        List<AccountUpgradeEntity> accountUpgradeEntityList = new ArrayList<>();
         for (Map.Entry<Integer, Float> entry : upgradeData.entrySet()){
             int upgradeId = entry.getKey();
             int upgradeAmount = Math.round(entry.getValue());
             AccountUpgradeEntity accountUpgradeEntity = new AccountUpgradeEntity();
             accountUpgradeEntity.setAccountId(player.getId());
             accountUpgradeEntity.setUpgradeId(upgradeId);
-            List<AccountUpgradeEntity> accountUpgradeEntityList = new ArrayList<>();
-            for(int i = 0; i < upgradeAmount; i++)
-                accountUpgradeEntityList.add(accountUpgradeEntity);
-            accountUpgradeDao.setAccountUpgrade(accountUpgradeEntityList);
+            accountUpgradeEntity.setNumber(upgradeAmount);
+            accountUpgradeEntityList.add(accountUpgradeEntity);
         }
+            accountUpgradeDao.setAccountUpgrade(accountUpgradeEntityList);
     }
 
 

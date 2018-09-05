@@ -29,7 +29,6 @@ public class UpgradeDaoImpl implements  UpgradeDao{
                 returnResult(upgradeEntityList);
             }
         }.run();
-
     }
 
     @Override

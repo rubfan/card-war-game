@@ -3,6 +3,7 @@ package game.service;
 import game.dto.*;
 
 import java.util.List;
+import java.util.Map;
 
 public interface AccountUpgradeService {
     List<AccountUpgradeDto> getAccountUpgrades(String[] fieldName, Object[] fieldValues);
@@ -11,11 +12,11 @@ public interface AccountUpgradeService {
 
     List<AccountUpgradeDto> getAccountUpgrades(int accountId);
 
-    List<UpgradeDto> getUpgrades(AccountDto accountDto);
+    Map<UpgradeDto, Integer> getUpgrades(AccountDto accountDto);
 
-    List<UpgradeBuildingDto> getUpgradesBuildings(String[] fieldName, Object[] fieldValues);
+    Map<UpgradeBuildingDto, Integer> getUpgradesBuildings(String[] fieldName, Object[] fieldValues);
 
-    List<UpgradeBuildingDto> getUpgradesBuildings(BuildingDto buildingDto, AccountDto accountDto);
+    Map<UpgradeBuildingDto, Integer> getUpgradesBuildings(BuildingDto buildingDto, AccountDto accountDto);
 
     float getTotalPercent(BuildingDto buildingDto, AccountDto accountDto);
 

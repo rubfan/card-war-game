@@ -7,6 +7,7 @@ public class AccountUpgradeDto {
     Integer id;
     Integer accountId;
     Integer upgradeId;
+    Integer number;
 
     public Integer getId() {
         return id;
@@ -32,12 +33,21 @@ public class AccountUpgradeDto {
         this.upgradeId = upgradeId;
     }
 
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
+
     @Override
     public String toString() {
         return "AccountUpgradeDto{" +
                 "id=" + id +
                 ", accountId=" + accountId +
                 ", upgradeId=" + upgradeId +
+                ", number=" + number +
                 '}';
     }
 }
