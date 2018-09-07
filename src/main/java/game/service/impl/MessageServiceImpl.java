@@ -33,14 +33,17 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public String sendMessage(MessageDto message, String accountId) {
-        MessageEntity messageDto = new MessageEntity();
-        messageDto.setId(message.getId());
-        messageDto.setText(message.getText());
-        messageDto.setFromAccountId(message.getFromAccountId());
-        messageDto.setToAccountId(message.getToAccountId());
-        messageDto.setTime(message.getTime());
 
-        return String.valueOf(messageDao.sendMessage(messageDto, accountId));
+        MessageEntity messageE = new MessageEntity();
+        messageDao.sendMessage(messageE, accountId);
+        MessageDto messageDto = new MessageDto(){{
+            setId(messageE.getId());
+            setText(messageE.getText());
+            setFromAccountId(messageE.getFromAccountId());
+            setToAccountId(messageE.getToAccountId());
+            setTime(messageE.getTime());}};
+
+        return messageDto.getText();
     }
 
     @Override
