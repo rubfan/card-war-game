@@ -10,6 +10,7 @@ CREATE TABLE `Account` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`user_id` INT NOT NULL,
 	`room_id` INT,
+	`start_game_time` DATETIME,
 	PRIMARY KEY (`id`)
 );
 
@@ -17,7 +18,7 @@ CREATE TABLE `Room` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`name` varchar(64) NOT NULL,
 	`description` varchar(128) NOT NULL,
-	`start_game_time` DATETIME,
+
 	PRIMARY KEY (`id`)
 );
 

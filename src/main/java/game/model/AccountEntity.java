@@ -1,19 +1,18 @@
-package game.dto;
+package game.model;
 
+import game.dto.RoomDto;
+import game.dto.UserDto;
+
+import java.io.Serializable;
 import java.util.Date;
 
-/**
- * @author ruslan.gramatic
- */
-public class AccountDto {
+public class AccountEntity implements Serializable {
     private Integer id;
     private UserDto user;
     private RoomDto room;
     private Date startGameTime;
 
-    public AccountDto() {}
-
-    public AccountDto(Integer id, UserDto user, RoomDto room, Date startGameTime) {
+    public AccountEntity(Integer id, UserDto user, RoomDto room, Date startGameTime) {
         this.id = id;
         this.user = user;
         this.room = room;
@@ -54,7 +53,7 @@ public class AccountDto {
 
     @Override
     public String toString() {
-        return "AccountDto{" +
+        return "AccountEntity{" +
                 "id=" + id +
                 ", user=" + user +
                 ", room=" + room +

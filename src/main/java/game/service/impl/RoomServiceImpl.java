@@ -1,5 +1,6 @@
 package game.service.impl;
 
+import game.dto.AccountRoomDto;
 import game.dto.RoomDto;
 import game.repository.dao.RoomDao;
 import game.service.RoomService;
@@ -26,6 +27,19 @@ public class RoomServiceImpl implements RoomService {
             }});
         });
         return rooms;
+    }
+
+    public List<AccountRoomDto> getAccountRoomList(){
+        List<AccountRoomDto> dtoRooms = new LinkedList<>();
+        roomDao.getAccountRoomList().forEach(accountRoomEntity -> {
+            dtoRooms.add(new AccountRoomDto(){{
+                setId(accountRoomEntity.getRoomId());
+                setAccount1(accountRoomEntity.getAccount1());
+                setAccount2(accountRoomEntity.getAccount2());
+            }});
+        });
+        return dtoRooms;
+
     }
 
     public void joinRoom(Integer roomId, Integer accountId) {

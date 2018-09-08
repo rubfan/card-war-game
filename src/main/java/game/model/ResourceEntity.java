@@ -1,5 +1,7 @@
 package game.model;
 
+import game.dto.ResourceDto;
+
 import java.io.Serializable;
 
 /**
@@ -16,7 +18,14 @@ public class ResourceEntity implements Serializable {
         this.description = description;
     }
 
-    public ResourceEntity() {}
+    public ResourceEntity (ResourceDto resourceDto) {
+        this.id = resourceDto.getId();
+        this.name = resourceDto.getName();
+        this.description = resourceDto.getDescription();
+    }
+
+    public ResourceEntity () {
+    }
 
     public Integer getId() {
         return id;

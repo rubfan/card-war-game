@@ -10,5 +10,5 @@ import java.util.List;
 public interface ResourceController {
     List<ResourceDto> getAllResourceList();
 
-
+    ResourceDto getResource(Integer resourceId);
 }
