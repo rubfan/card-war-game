@@ -1,16 +1,17 @@
-package game.dto;
+package game.model;
+
 
 /**
  * @author evgen.Kaliba
  */
-public class AccountResourceDto {
+public class AccountResourceEntity {
     private Integer resourceId;
-    private Float amount;
-    private Float numPerMin;
+    private Integer amount;
+    private Integer numPerMin;
 
     @Override
     public String toString() {
-        return "AccountResourceDto{" +
+        return "AccountResourceEntity{" +
                 "resourceId=" + resourceId +
                 ", amount=" + amount +
                 ", numPerMin=" + numPerMin +
