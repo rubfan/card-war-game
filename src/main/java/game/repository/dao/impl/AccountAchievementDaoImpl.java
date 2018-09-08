@@ -16,12 +16,13 @@ public class AccountAchievementDaoImpl implements AccountAchievementDao {
 
     @Override
     public List<AccountAchievementEntity> getAccountAchievementList(Integer accountId) {
+        updateAccountAchievementList(accountId);
         return new QueryHelper<List<AccountAchievementEntity>>() {
 
             @Override
             protected void executeQuery(Statement statement, Connection connection) throws SQLException {
                 List<AccountAchievementEntity> accountAchievementEntityList = new ArrayList<>();
-                ResultSet resultSet = statement.executeQuery("select * from Account_Achievement where account_id = " + accountId);
+                ResultSet resultSet = statement.executeQuery("select * from Account_Achievement a where a.account_id = " + accountId);
                 while (resultSet.next()) {
                     AccountAchievementEntity accountAchievementEntity = new AccountAchievementEntity();
                     accountAchievementEntity.setId(resultSet.getInt("id"));
@@ -40,7 +41,7 @@ public class AccountAchievementDaoImpl implements AccountAchievementDao {
         new QueryHelper() {
             @Override
             protected void executeQuery(Statement statement, Connection connection) throws SQLException {
-                statement.executeUpdate("delete * from Account_Achievement where account_id = " + accountId);
+                statement.executeUpdate("delete * from Account_Achievement a where a.account_id = " + accountId);
             }
         }.run();
     }
