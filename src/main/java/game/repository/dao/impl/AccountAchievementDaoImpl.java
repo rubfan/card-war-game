@@ -16,9 +16,7 @@ public class AccountAchievementDaoImpl implements AccountAchievementDao {
 
     @Override
     public List<AccountAchievementEntity> getAccountAchievementList(Integer accountId) {
-
         updateAccountAchievementList(accountId);
-
         return new QueryHelper<List<AccountAchievementEntity>>() {
 
             @Override
@@ -53,7 +51,6 @@ public class AccountAchievementDaoImpl implements AccountAchievementDao {
         new QueryHelper() {
             @Override
             protected void executeQuery(Statement statement, Connection connection) throws SQLException {
-
                 ResultSet resultSet = statement.executeQuery(
                         "select t.achievement_id, a.achievement_id as achievement_number,\n" +
                                 " floor(ifnull(r.number, 0) / t.resource_number - ifnull(a.number, 0)) as resourse_increment,\n" +
@@ -68,7 +65,6 @@ public class AccountAchievementDaoImpl implements AccountAchievementDao {
                                 "       ifnull(b.number, 0) >= ifnull(t.building_number, 0) and\n" +
                                 "       ifnull(u.number, 0) >= ifnull(t.upgrade_number, 0)"
                 );
-
                 while (resultSet.next()) {
                     List<Integer> increasingValueList = new ArrayList<>();
                     for (int i = 3; i <= 5; i++) {
