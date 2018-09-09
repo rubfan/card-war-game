@@ -11,6 +11,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
+/**
+ * @author alexey.kostash
+ */
+
 @Path("/achievements")
 public class AchievementControllerImpl implements AchievementController {
 

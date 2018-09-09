@@ -1,6 +1,12 @@
 package game.model;
 
-public class AccountAchievementEntity {
+import java.io.Serializable;
+
+/**
+ * @author alexey.kostash
+ */
+
+public class AccountAchievementEntity implements Serializable {
     private Integer id;
     private Integer account_id;
     private Integer achievement_id;

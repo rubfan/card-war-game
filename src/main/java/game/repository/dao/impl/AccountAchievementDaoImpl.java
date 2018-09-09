@@ -12,6 +12,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * @author alexey.kostash
+ */
+
 public class AccountAchievementDaoImpl implements AccountAchievementDao {
 
     @Override

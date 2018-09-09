@@ -8,6 +8,10 @@ import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author alexey.kostash
+ */
+
 public class AccountAchievemenServiceImpl implements AccountAchievemenService {
 
     @Inject

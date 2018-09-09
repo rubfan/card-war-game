@@ -12,6 +12,10 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
+/**
+ * @author alexey.kostash
+ */
+
 @Path("/account_achieveent")
 public class AccountAchievementControllerImpl implements AccountAchievementController {
 
