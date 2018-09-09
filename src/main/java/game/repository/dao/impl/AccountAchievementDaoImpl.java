@@ -17,6 +17,8 @@ public class AccountAchievementDaoImpl implements AccountAchievementDao {
     @Override
     public List<AccountAchievementEntity> getAccountAchievementList(Integer accountId) {
 
+        updateAccountAchievementList(accountId);
+
         return new QueryHelper<List<AccountAchievementEntity>>() {
 
             @Override
