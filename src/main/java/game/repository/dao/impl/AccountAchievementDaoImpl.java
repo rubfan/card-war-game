@@ -16,13 +16,13 @@ public class AccountAchievementDaoImpl implements AccountAchievementDao {
 
     @Override
     public List<AccountAchievementEntity> getAccountAchievementList(Integer accountId) {
-        updateAccountAchievementList(accountId);
+
         return new QueryHelper<List<AccountAchievementEntity>>() {
 
             @Override
             protected void executeQuery(Statement statement, Connection connection) throws SQLException {
                 List<AccountAchievementEntity> accountAchievementEntityList = new ArrayList<>();
-                ResultSet resultSet = statement.executeQuery("select * from Account_Achievement a where a.account_id = " + accountId);
+                ResultSet resultSet = statement.executeQuery("select * from Account_Achievement where account_id = " + accountId);
                 while (resultSet.next()) {
                     AccountAchievementEntity accountAchievementEntity = new AccountAchievementEntity();
                     accountAchievementEntity.setId(resultSet.getInt("id"));
@@ -41,7 +41,7 @@ public class AccountAchievementDaoImpl implements AccountAchievementDao {
         new QueryHelper() {
             @Override
             protected void executeQuery(Statement statement, Connection connection) throws SQLException {
-                statement.executeUpdate("delete * from Account_Achievement a where a.account_id = " + accountId);
+                statement.executeUpdate("delete from Account_Achievement where account_id = " + accountId);
             }
         }.run();
     }
@@ -51,11 +51,12 @@ public class AccountAchievementDaoImpl implements AccountAchievementDao {
         new QueryHelper() {
             @Override
             protected void executeQuery(Statement statement, Connection connection) throws SQLException {
+
                 ResultSet resultSet = statement.executeQuery(
-                        "select t.achievement_id,\n" +
-                                " floor(ifnull(r.number / t.resource_number, 0) - ifnull(a.number, 0)) as resourse_increment,\n" +
-                                " floor(ifnull(b.number / t.building_number, 0) - ifnull(a.number, 0)) as building_increment,\n" +
-                                " floor(ifnull(u.number / t.upgrade_number, 0) - ifnull(a.number, 0)) as upgrade_increment\n" +
+                        "select t.achievement_id, a.achievement_id as achievement_number,\n" +
+                                " floor(ifnull(r.number, 0) / t.resource_number - ifnull(a.number, 0)) as resourse_increment,\n" +
+                                " floor(ifnull(b.number, 0) / t.building_number - ifnull(a.number, 0)) as building_increment,\n" +
+                                " floor(ifnull(u.number, 0) / t.upgrade_number - ifnull(a.number, 0)) as upgrade_increment\n" +
                                 " from trigger_achievement t\n" +
                                 " left join account_achievement a on t.achievement_id = a.achievement_id and a.account_id = " + accountId +
                                 " left join account_resource r on t.resource_id = r.resource_id and r.account_id = " + accountId +
@@ -67,21 +68,22 @@ public class AccountAchievementDaoImpl implements AccountAchievementDao {
                 );
 
                 while (resultSet.next()) {
-                    Integer achievementId = resultSet.getInt("achievement_id");
-                    Integer increasingValue = 0;
+                    System.out.println(resultSet.getObject("achievement_number"));
                     List<Integer> increasingValueList = new ArrayList<>();
-                    for (int i = 2; i <= 4; i++) {
-                        if (resultSet.getInt(i) > 0) increasingValueList.add(resultSet.getInt(i));
+                    for (int i = 3; i <= 5; i++) {
+                        if (resultSet.getObject(i) != null) {
+                            increasingValueList.add(resultSet.getInt(i));
+                        }
                     }
-                    if (!increasingValueList.isEmpty()) {
-                        increasingValue = Collections.min(increasingValueList);
-                        if (statement.execute(" select * from Account_Achievement where account_id = " + accountId +
-                                " and achievement_id = " + achievementId)) {
-                            statement.executeUpdate(" update Account_Achievement set number = number + " + increasingValue +
-                                    " where account_id = " + accountId + " and achievement_id = " + achievementId);
-                        } else {
-                            statement.executeUpdate(" insert into Account_Achievement (account_id, achievement_id, number) " +
+                    Integer increasingValue = Collections.min(increasingValueList);
+                    if (increasingValue > 0) {
+                        Integer achievementId = resultSet.getInt("achievement_id");
+                        if (resultSet.getObject("achievement_number") == null) {
+                            connection.createStatement().executeUpdate(" insert into Account_Achievement (account_id, achievement_id, number) " +
                                     " values (" + accountId + ", " + achievementId + ", " + increasingValue + ")");
+                        } else {
+                            connection.createStatement().executeUpdate(" update Account_Achievement set number = number + " + increasingValue +
+                                    " where account_id = " + accountId + " and achievement_id = " + achievementId);
                         }
                     }
                 }
