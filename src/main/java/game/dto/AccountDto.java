@@ -11,6 +11,15 @@ public class AccountDto {
     private RoomDto room;
     private Date startGameTime;
 
+    public AccountDto() {}
+
+    public AccountDto(Integer id, UserDto user, RoomDto room, Date startGameTime) {
+        this.id = id;
+        this.user = user;
+        this.room = room;
+        this.startGameTime = startGameTime;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -41,5 +50,15 @@ public class AccountDto {
 
     public void setStartGameTime(Date startGameTime) {
         this.startGameTime = startGameTime;
+    }
+
+    @Override
+    public String toString() {
+        return "AccountDto{" +
+                "id=" + id +
+                ", user=" + user +
+                ", room=" + room +
+                ", startGameTime=" + startGameTime +
+                '}';
     }
 }

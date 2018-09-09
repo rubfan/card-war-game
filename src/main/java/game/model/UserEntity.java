@@ -1,9 +1,11 @@
 package game.model;
 
+import java.io.Serializable;
+
 /**
  * @author ruslan.gramatic
  */
-public class UserEntity {
+public class UserEntity implements Serializable {
     private Integer id;
     private String name;
     private String password;

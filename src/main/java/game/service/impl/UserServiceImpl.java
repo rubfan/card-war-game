@@ -2,7 +2,9 @@ package game.service.impl;
 
 import game.dto.UserDto;
 import game.model.UserEntity;
+import game.repository.dao.AccountDao;
 import game.repository.dao.UserDao;
+import game.repository.dao.impl.AccountDaoImpl;
 import game.service.UserService;
 
 import javax.inject.Inject;

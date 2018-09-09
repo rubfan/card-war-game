@@ -1,14 +1,17 @@
 package game.dto;
 
+import jersey.repackaged.com.google.common.collect.HashBasedTable;
+
 /**
  * @author ruslan.gramatic
  */
+
 public class AccountRoomDto {
     private Integer roomId;
     private AccountDto account1;
     private AccountDto account2;
-
     public AccountRoomDto() {}
+
 
     public AccountRoomDto(Integer roomId, AccountDto account1, AccountDto account2) {
         this.roomId = roomId;
