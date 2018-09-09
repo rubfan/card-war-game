@@ -68,7 +68,6 @@ public class AccountAchievementDaoImpl implements AccountAchievementDao {
                 );
 
                 while (resultSet.next()) {
-                    System.out.println(resultSet.getObject("achievement_number"));
                     List<Integer> increasingValueList = new ArrayList<>();
                     for (int i = 3; i <= 5; i++) {
                         if (resultSet.getObject(i) != null) {
