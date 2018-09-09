@@ -1,13 +1,19 @@
-package game.dto;
+package game.model;
+
+import java.io.Serializable;
 
 /**
- * @author ruslan.gramatic
+ * @author alexey.kostash
  */
 
-public class AchievementDto {
+public class AchievementEntity implements Serializable {
+
     private Integer id;
     private String name;
     private String description;
+
+    public AchievementEntity() {
+    }
 
     public Integer getId() {
         return id;
@@ -35,7 +41,7 @@ public class AchievementDto {
 
     @Override
     public String toString() {
-        return "AchievementDto{" +
+        return "AchievementEntity{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +

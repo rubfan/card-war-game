@@ -50,7 +50,7 @@ CREATE TABLE `Account_Achievement` (
 	`id` INT NOT NULL AUTO_INCREMENT,
 	`account_id` INT NOT NULL,
 	`achievement_id` INT NOT NULL,
-	`number` FLOAT NOT NULL,
+	`number` FLOAT NOT NULL default 0,
 	PRIMARY KEY (`id`)
 );
 
