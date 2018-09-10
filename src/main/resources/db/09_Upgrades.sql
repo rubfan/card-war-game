@@ -28,4 +28,8 @@ insert into upgrade (id, name, description) values
 (27, 'New armor', 'no comment'),
 (28, 'Steel feathers', 'no comment'),
 (29, 'Armed and dangerous', 'no comment'),
+<<<<<<< HEAD
 (30, 'Disney Princess? Really?', 'no comment')
+=======
+(30, 'Disney Princess? Really?', 'no comment')
+>>>>>>> f63b421d7de81c718fab4ad2e007d52a8705bdb8

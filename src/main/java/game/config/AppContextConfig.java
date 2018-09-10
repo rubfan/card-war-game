@@ -1,46 +1,22 @@
 package game.config;
 
-import game.controller.BuildingController;
-import game.controller.RoomController;
-import game.controller.UserController;
-import game.controller.impl.BuildingControllerImpl;
-import game.controller.impl.RoomControllerImpl;
-import game.controller.impl.UserControllerImpl;
-import game.repository.dao.BuildingDao;
-import game.repository.dao.RoomDao;
-import game.repository.dao.UserDao;
-import game.repository.dao.impl.BuildingDaoImpl;
-import game.repository.dao.impl.RoomDaoImpl;
-import game.repository.dao.impl.UserDaoImpl;
-import game.service.BuildingService;
-import game.service.RoomService;
-import game.service.UserService;
-import game.service.impl.BuildingServiceImpl;
-import game.service.impl.RoomServiceImpl;
-import game.service.impl.UserServiceImpl;
+import game.controller.*;
+import game.controller.impl.*;
+import game.repository.dao.*;
+import game.repository.dao.impl.*;
+import game.service.*;
+import game.service.impl.*;
 
-import game.controller.CardController;
-import game.controller.AchievementController;
 import game.controller.RoomController;
 import game.controller.UserController;
-import game.controller.impl.CardControllerImpl;
-import game.controller.impl.AchievementControllerImpl;
 import game.controller.impl.RoomControllerImpl;
 import game.controller.impl.UserControllerImpl;
-import game.repository.dao.CardDao;
-import game.repository.dao.AchievementDao;
 import game.repository.dao.RoomDao;
 import game.repository.dao.UserDao;
-import game.repository.dao.impl.CardDaoImpl;
-import game.repository.dao.impl.AchievementDaoImpl;
 import game.repository.dao.impl.RoomDaoImpl;
 import game.repository.dao.impl.UserDaoImpl;
-import game.service.CardService;
-import game.service.AchievementService;
 import game.service.RoomService;
 import game.service.UserService;
-import game.service.impl.CardServiceImpl;
-import game.service.impl.AchievementServiceImpl;
 import game.service.impl.RoomServiceImpl;
 import game.service.impl.UserServiceImpl;
 
@@ -151,6 +127,19 @@ public class AppContextConfig {
                     bindAsContract(AchievementDaoImpl.class).to(AchievementDao.class);
                     bindAsContract(AchievementServiceImpl.class).to(AchievementService.class);
                     bindAsContract(AchievementControllerImpl.class).to(AchievementController.class);
+
+                    bindAsContract(UpgradeDaoImpl.class).to(UpgradeDao.class);
+                    bindAsContract(UpgradeServiceImpl.class).to(UpgradeService.class);
+                    bindAsContract(UpgradeControllerImpl.class).to(UpgradeController.class);
+
+                    bindAsContract(UpgradeBuildingDaoImpl.class).to(UpgradeBuildingDao.class);
+                    bindAsContract(UpgradeBuildingServiceImpl.class).to(UpgradeBuildingService.class);
+
+                    bindAsContract(AccountUpgradeDaoImpl.class).to(AccountUpgradeDao.class);
+                    bindAsContract(AccountUpgradeServiceImpl.class).to(AccountUpgradeService.class);
+                    bindAsContract(AccountUpgradeControllerImpl.class).to(AccountUpgradeController.class);
+
+
 
                 }
             });
