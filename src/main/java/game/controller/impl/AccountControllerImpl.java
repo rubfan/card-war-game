@@ -16,9 +16,8 @@ public class AccountControllerImpl implements AccountController {
     @Inject
     public AccountService accountService;
 
-
+    @GET
     @Path("{accountId}")
-    @Override
     public AccountDto getAccount(@PathParam("accountId") Integer accountId) {
         return accountService.getAccount(accountId);
     }

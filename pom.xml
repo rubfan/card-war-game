@@ -75,10 +75,23 @@
         </dependency>
 
         <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.activation</groupId>
+            <artifactId>activation</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-server</artifactId>
             <version>9.2.3.v20140905</version>
         </dependency>
+
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-servlet</artifactId>
@@ -111,25 +124,24 @@
             <version>2.7</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>okhttp</artifactId>
-            <version>3.7.0</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>okhttp</artifactId>
-            <version>RELEASE</version>
-            <scope>compile</scope>
-        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>com.squareup.okhttp3</groupId>-->
+        <!--<artifactId>okhttp</artifactId>-->
+        <!--<version>3.7.0</version>-->
+        <!--<scope>test</scope>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--<groupId>com.squareup.okhttp3</groupId>-->
+        <!--<artifactId>okhttp</artifactId>-->
+        <!--<version>RELEASE</version>-->
+        <!--<scope>compile</scope>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>RELEASE</version>
             <scope>compile</scope>
         </dependency>
-
 
     </dependencies>
 

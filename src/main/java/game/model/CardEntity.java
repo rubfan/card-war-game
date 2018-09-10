@@ -1,15 +1,20 @@
-package game.dto;
+package game.model;
 
-/**
- * @author ruslan.gramatic
- */
-public class CardDto {
+import java.io.Serializable;
+
+public class CardEntity implements Serializable {
     private Integer id;
     private String name;
     private String description;
-    private CardImpactDto cardImpactDto;
+    private CardImpactEntity cardImpactEntity;
 
-    public CardDto() {}
+    public CardEntity() {}
+
+    public CardEntity(Integer id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+    }
 
     public Integer getId() {
         return id;
@@ -35,21 +40,21 @@ public class CardDto {
         this.description = description;
     }
 
-    public CardImpactDto getCardImpactDto() {
-        return cardImpactDto;
+    public CardImpactEntity getCardImpactEntity() {
+        return cardImpactEntity;
     }
 
-    public void setCardImpactDto(CardImpactDto cardImpactDto) {
-        this.cardImpactDto = cardImpactDto;
+    public void setCardImpactEntity(CardImpactEntity cardImpactEntity) {
+        this.cardImpactEntity = cardImpactEntity;
     }
 
     @Override
     public String toString() {
-        return "CardDto{" +
+        return "CardEntity{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", cardImpactDto=" + cardImpactDto +
+                ", cardImpactEntity=" + cardImpactEntity +
                 '}';
     }
 }

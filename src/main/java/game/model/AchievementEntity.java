@@ -1,15 +1,19 @@
-package game.dto;
+package game.model;
+
+import java.io.Serializable;
 
 /**
- * @author ruslan.gramatic
+ * @author alexey.kostash
  */
-public class CardDto {
+
+public class AchievementEntity implements Serializable {
+
     private Integer id;
     private String name;
     private String description;
-    private CardImpactDto cardImpactDto;
 
-    public CardDto() {}
+    public AchievementEntity() {
+    }
 
     public Integer getId() {
         return id;
@@ -35,21 +39,12 @@ public class CardDto {
         this.description = description;
     }
 
-    public CardImpactDto getCardImpactDto() {
-        return cardImpactDto;
-    }
-
-    public void setCardImpactDto(CardImpactDto cardImpactDto) {
-        this.cardImpactDto = cardImpactDto;
-    }
-
     @Override
     public String toString() {
-        return "CardDto{" +
+        return "AchievementEntity{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", cardImpactDto=" + cardImpactDto +
                 '}';
     }
 }

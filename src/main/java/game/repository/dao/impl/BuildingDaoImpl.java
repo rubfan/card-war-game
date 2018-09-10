@@ -20,7 +20,9 @@ public class BuildingDaoImpl implements BuildingDao {
             @Override
             protected void executeQuery(Statement statement, Connection connection) throws SQLException {
                 List<BuildingEntity> buildingEntityList = new LinkedList<>();
-                ResultSet rs = statement.executeQuery("SELECT * FROM building;");
+                ResultSet rs = statement.executeQuery("SELECT * FROM building b " +
+                        "JOIN building_resource br on b.id = br.building_id " +
+                        "JOIN resource r on r.id = b.resource_id;");
                 while (rs.next()){
                     BuildingEntity buildingEntity = new BuildingEntity();
                     buildingEntity.setId(rs.getInt("id"));

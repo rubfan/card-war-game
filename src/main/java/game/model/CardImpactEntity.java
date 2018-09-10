@@ -1,14 +1,12 @@
-package game.dto;
+package game.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * @author ruslan.gramatic
- */
-public class CardImpactDto {
+public class CardImpactEntity implements Serializable {
     private Integer id;
-    private CardGroupDto cardGroupDto;
+    private CardGroupEntity cardGroupEntity;
     private Map<Integer, Float> p1BuildingAmountMap;
     private Map<Integer, Float> p2BuildingAmountMap;
     private Map<Integer, Float> p1ResourceAmountMap;
@@ -18,7 +16,7 @@ public class CardImpactDto {
     private Map<Integer, Float> necessaryBuildingAmountMap;
     private Map<Integer, Float> necessaryUpgradeAmountMap;
 
-    public CardImpactDto() {
+    public CardImpactEntity() {
         p1BuildingAmountMap = new HashMap<>();
         p2BuildingAmountMap = new HashMap<>();
         p1ResourceAmountMap = new HashMap<>();
@@ -27,12 +25,11 @@ public class CardImpactDto {
         p2UpgradeAmountMap = new HashMap<>();
         necessaryBuildingAmountMap = new HashMap<>();
         necessaryUpgradeAmountMap = new HashMap<>();
-
     }
 
-    public CardImpactDto(Integer id, CardGroupDto cardGroupDto, Map<Integer, Float> p1BuildingAmountMap, Map<Integer, Float> p2BuildingAmountMap, Map<Integer, Float> p1ResourceAmountMap, Map<Integer, Float> p2ResourceAmountMap, Map<Integer, Float> p1UpgradeAmountMap, Map<Integer, Float> p2UpgradeAmountMap, Map<Integer, Float> necessaryBuildingAmountMap, Map<Integer, Float> necessaryUpgradeAmountMap) {
+    public CardImpactEntity(Integer id, CardGroupEntity cardGroupEntity, Map<Integer, Float> p1BuildingAmountMap, Map<Integer, Float> p2BuildingAmountMap, Map<Integer, Float> p1ResourceAmountMap, Map<Integer, Float> p2ResourceAmountMap, Map<Integer, Float> p1UpgradeAmountMap, Map<Integer, Float> p2UpgradeAmountMap, Map<Integer, Float> necessaryBuildingAmountMap, Map<Integer, Float> necessaryUpgradeAmountMap) {
         this.id = id;
-        this.cardGroupDto = cardGroupDto;
+        this.cardGroupEntity = cardGroupEntity;
         this.p1BuildingAmountMap = p1BuildingAmountMap;
         this.p2BuildingAmountMap = p2BuildingAmountMap;
         this.p1ResourceAmountMap = p1ResourceAmountMap;
@@ -51,12 +48,12 @@ public class CardImpactDto {
         this.id = id;
     }
 
-    public CardGroupDto getCardGroupDto() {
-        return cardGroupDto;
+    public CardGroupEntity getCardGroupEntity() {
+        return cardGroupEntity;
     }
 
-    public void setCardGroupDto(CardGroupDto cardGroupDto) {
-        this.cardGroupDto = cardGroupDto;
+    public void setCardGroupEntity(CardGroupEntity cardGroupEntity) {
+        this.cardGroupEntity = cardGroupEntity;
     }
 
     public Map<Integer, Float> getP1BuildingAmountMap() {
@@ -125,9 +122,9 @@ public class CardImpactDto {
 
     @Override
     public String toString() {
-        return "CardImpactDto{" +
+        return "CardImpactEntity{" +
                 "id=" + id +
-                ", cardGroupDto=" + cardGroupDto +
+                ", cardGroupEntity=" + cardGroupEntity +
                 ", p1BuildingAmountMap=" + p1BuildingAmountMap +
                 ", p2BuildingAmountMap=" + p2BuildingAmountMap +
                 ", p1ResourceAmountMap=" + p1ResourceAmountMap +
