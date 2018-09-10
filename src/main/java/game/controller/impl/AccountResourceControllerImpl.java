@@ -4,6 +4,7 @@ package game.controller.impl;
  */
 import game.controller.AccountResourceController;
 import game.dto.AccountResourceDto;
+import game.repository.dao.AccountResourceDao;
 import game.service.AccountResourceService;
 
 import javax.inject.Inject;
@@ -23,7 +24,14 @@ public class AccountResourceControllerImpl implements AccountResourceController 
         @Inject
         public AccountResourceService accountResourceService;
 
-        @GET
+    @GET
+    @Path("/clean")
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public void clearAccountResourceList(Integer accountId) {
+        accountResourceService.clearAccountResourceList(accountId);
+        }
+
+    @GET
         @Path("/list")
         @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
         public List<AccountResourceDto> getAccountResourceList(Integer accountId){

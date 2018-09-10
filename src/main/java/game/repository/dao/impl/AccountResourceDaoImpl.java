@@ -6,6 +6,10 @@ import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * @author Evgen.Kaliba
+ */
+
 public class AccountResourceDaoImpl implements AccountResourceDao {
 
     private String calculateResourceOnAccountQuery(Integer accountId) {

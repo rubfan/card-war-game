@@ -3,10 +3,13 @@ package game.service.impl;
 import game.dto.AccountResourceDto;
 import game.repository.dao.AccountResourceDao;
 import game.service.AccountResourceService;
-
 import javax.inject.Inject;
 import java.util.LinkedList;
 import java.util.List;
+
+/**
+ * @author Evgen.Kaliba
+ */
 
 public class AccountResourceServiceImpl implements AccountResourceService {
 
@@ -27,4 +30,10 @@ public class AccountResourceServiceImpl implements AccountResourceService {
         });
         return accountResource;
     }
+
+    @Override
+     public void clearAccountResourceList(Integer accountId) {
+        accountResourceDao.clearAccountResourceList(accountId);
+        }
+
 }

@@ -10,6 +10,6 @@ import java.util.List;
  * @author ruslan.gramatic
  */
 public interface AccountResourceController {
-    Response clearAccountResourceList(Integer accountId);
+    void clearAccountResourceList(Integer accountId);
     List<AccountResourceDto> getAccountResourceList(Integer accountId);
 }
