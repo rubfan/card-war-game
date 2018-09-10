@@ -20,6 +20,6 @@ VALUES
     (17, 'Lets make Booooom','Collect 2000 gunpowder(in all)'),
     (18, 'I have enough steel to be an Ironman','Collect 5000 of steel'),
     (19, 'Eggs better that War','Collect 5000 of eggs and upgrade 10 Chicken Houses'),
-    (20, 'Hogwarts', 'Collect 4 School of Mages and 200 cocks magicians')
+    (20, 'Hogwarts', 'Collect 4 School of Mages and 200 cocks magicians'),
     (21, 'Robin Good', 'Upgrade 5 School of Archers and collect 500 wood'),
     (22, 'You are SuperCock', 'Upgrade 10 Cocks House, make 10 Cocks House and collect 10000 cocks');

@@ -18,7 +18,7 @@ public class AccountResourceServiceImpl implements AccountResourceService {
 
     @Override
     public List<AccountResourceDto> getAccountResourceList(Integer accountId) {
-        final List<AccountResourceDto> accountResource = new LinkedList<>();
+         List<AccountResourceDto> accountResource = new LinkedList<>();
         accountResourceDao.getAccountResourceList(accountId).forEach(accountResourceEntity -> {
             accountResource.add(new AccountResourceDto() {
                 {

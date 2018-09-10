@@ -25,16 +25,16 @@ public class AccountResourceControllerImpl implements AccountResourceController 
         public AccountResourceService accountResourceService;
 
     @GET
-    @Path("/clean")
+    @Path("clean/{accountId}")
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public void clearAccountResourceList(Integer accountId) {
+    public void clearAccountResourceList(@PathParam("accountId") Integer accountId) {
         accountResourceService.clearAccountResourceList(accountId);
         }
 
     @GET
-        @Path("/list")
+        @Path("list/{accountId}/")
         @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-        public List<AccountResourceDto> getAccountResourceList(Integer accountId){
+        public List<AccountResourceDto> getAccountResourceList(@PathParam("accountId") Integer accountId){
             List<AccountResourceDto> accountResourceList = accountResourceService.getAccountResourceList(accountId);
             Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, accountResourceList.toString());
             return accountResourceList;
