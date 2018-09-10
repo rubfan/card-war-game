@@ -15,6 +15,7 @@ public class BuildingServiceImpl implements BuildingService {
 
     @Override
     public List<BuildingDto> getAllBuildingList() {
+
         final List<BuildingDto> buildings = new LinkedList<>();
         buildingDao.getAllBuildingList().forEach(buildingEntity -> {
             buildings.add(new BuildingDto() {{
@@ -24,5 +25,6 @@ public class BuildingServiceImpl implements BuildingService {
             }});
         });
         return buildings;
+
     }
 }
