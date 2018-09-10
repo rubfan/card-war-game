@@ -49,7 +49,7 @@ public class AccountResourceDaoImpl implements AccountResourceDao {
                 ResultSet rs = statement.executeQuery(calculateResourceOnAccountQuery(accountId));
                 while(rs.next()) {
                     AccountResourceEntity accountResource = new AccountResourceEntity();
-                    accountResource.setResourceId(rs.getInt("id"));
+                    accountResource.setResourceId(rs.getInt("resource_id"));
                     accountResource.setAmount(rs.getInt("number"));
                     accountResource.setNumPerMin(rs.getInt("num_per_min"));
                     accountResourceDtoList.add(accountResource);
