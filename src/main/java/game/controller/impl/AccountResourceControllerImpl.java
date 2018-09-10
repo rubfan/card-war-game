@@ -1,7 +1,10 @@
 package game.controller.impl;
-
+/**
+ * @author Evgen.Kaliba
+ */
 import game.controller.AccountResourceController;
 import game.dto.AccountResourceDto;
+import game.service.AccountResourceService;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -18,20 +21,17 @@ import java.util.logging.Logger;
 public class AccountResourceControllerImpl implements AccountResourceController {
 
         @Inject
-        public AccountResourseService
+        public AccountResourceService accountResourceService;
 
         @GET
-        @Path("list")
-        public List<ResourceDto> getAllResourceList() {
-            return resourceService.getAllResourceList();
-        }
-
-        @GET
-        @Path("{id}")
+        @Path("/list")
         @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-        public ResourceDto getResource(@PathParam("id") Integer resourceId) {
-            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE,"resourceId=" + resourceId);
-            return resourceService.getResource(resourceId);
+        public List<AccountResourceDto> getAccountResourceList(Integer accountId){
+            List<AccountResourceDto> accountResourceList = accountResourceService.getAccountResourceList(accountId);
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, accountResourceList.toString());
+            return accountResourceList;
+
+        }
 
 
 }

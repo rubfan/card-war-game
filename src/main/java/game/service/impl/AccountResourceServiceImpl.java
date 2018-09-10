@@ -11,14 +11,20 @@ import java.util.List;
 public class AccountResourceServiceImpl implements AccountResourceService {
 
     @Inject
-    public AccountResourceDao accountResourceDao;
+    AccountResourceDao accountResourceDao;
 
     @Override
     public List<AccountResourceDto> getAccountResourceList(Integer accountId) {
-        final List<AccountResourceDto> accountResourceList = new LinkedList<>();
-
-        return null;
+        final List<AccountResourceDto> accountResource = new LinkedList<>();
+        accountResourceDao.getAccountResourceList(accountId).forEach(accountResourceEntity -> {
+            accountResource.add(new AccountResourceDto() {
+                {
+                    setResourceId(accountResourceEntity.getResourceId());
+                    setAmount(accountResourceEntity.getAmount());
+                    setNumPerMin(accountResourceEntity.getNumPerMin());
+                }
+            });
+        });
+        return accountResource;
     }
-
-
 }
