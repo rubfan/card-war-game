@@ -15,7 +15,7 @@ public class AccountResourceDaoImpl implements AccountResourceDao {
     private String calculateResourceOnAccountQuery(Integer accountId) {
         StringBuilder accountResourseQuery = new StringBuilder();
         accountResourseQuery.append("SELECT ar.resource_id, ar.number, ab.number * br.number_per_sec * 60 + ab.number * ub.percent AS num_per_min ");
-        accountResourseQuery.append("FROM Account_Resource ar");
+        accountResourseQuery.append("FROM Account_Resource ar ");
         accountResourseQuery.append("LEFT JOIN Account_Building ab ON ar.account_id = ab.account_id ");
         accountResourseQuery.append("LEFT JOIN Account_Upgrade au ON ar.account_id = au.account_id ");
         accountResourseQuery.append("LEFT JOIN Building_Resource br ON br.building_id = ab.building_id ");
@@ -23,6 +23,7 @@ public class AccountResourceDaoImpl implements AccountResourceDao {
         accountResourseQuery.append("WHERE ar.account_id = " + accountId + " AND ab.account_id = " + accountId + " ");
         accountResourseQuery.append("AND br.resource_id = ar.resource_id AND ab.building_id = br.building_id ");
         accountResourseQuery.append("GROUP BY br.resource_id ");
+        System.out.println(accountResourseQuery.toString());
         return accountResourseQuery.toString();
     }
 
