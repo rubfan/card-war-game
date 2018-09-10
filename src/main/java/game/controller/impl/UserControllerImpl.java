@@ -68,4 +68,3 @@ public class UserControllerImpl implements UserController {
         return Response.status(201).entity("User").cookie(newCookie).build();
     }
 }
-

@@ -46,6 +46,7 @@ public class MessageDaoImpl implements MessageDao {
                 psmt.setInt(2, message.getFromAccountId());
                 psmt.setInt(3, message.getToAccountId());
                 psmt.setDate(4, (Date) message.getTime());
+                psmt.executeUpdate();
                 returnResult(message.getText());
             }
         }.run();
@@ -57,15 +58,17 @@ public class MessageDaoImpl implements MessageDao {
             protected void executeQuery(Statement statement, Connection connection) throws SQLException {
                 List<MessageEntity> messages = new LinkedList<>();
                 ResultSet rs = statement.executeQuery(
-                        "select id, text, from_account_id, to_account_id, time from Message" +
-                                "JOIN Account ON Account.id=Message.from_account_id OR Account.id=Message.to_account_id"
+                        "select id, text, from_account_id, to_account_id, time from Message " +
+                                "JOIN Account a1 ON a1.id=Message.from_account_id " +
+                                "JOIN Account a2 ON a2.id=Message.to_account_id " +
+                                "WHERE a1.room_id=a2.room_id ;"
                 );
                 while(rs.next()) {
                     MessageEntity message = new MessageEntity();
                     message.setId(rs.getInt("id"));
                     message.setText(rs.getString("text"));
                     message.setFromAccountId(rs.getInt("from_account_id"));
-                    message.setFromAccountId(rs.getInt("to_account_id"));
+                    message.setToAccountId(rs.getInt("to_account_id"));
                     message.setTime(rs.getDate("time"));
                     messages.add(message);
                 }

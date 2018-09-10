@@ -8,5 +8,5 @@ import java.util.List;
  */
 public interface AccountCardController {
     List<Integer> getAllowAccountCardList(Integer accountId);
-    Response applyCard(Integer accountId, Integer cardId);
+    Response applyCard(Integer accountId, Integer accountEnemyId, Integer cardId);
 }

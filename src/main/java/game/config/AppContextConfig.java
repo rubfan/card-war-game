@@ -7,6 +7,19 @@ import game.repository.dao.impl.*;
 import game.service.*;
 import game.service.impl.*;
 
+import game.controller.RoomController;
+import game.controller.UserController;
+import game.controller.impl.RoomControllerImpl;
+import game.controller.impl.UserControllerImpl;
+import game.repository.dao.RoomDao;
+import game.repository.dao.UserDao;
+import game.repository.dao.impl.RoomDaoImpl;
+import game.repository.dao.impl.UserDaoImpl;
+import game.service.RoomService;
+import game.service.UserService;
+import game.service.impl.RoomServiceImpl;
+import game.service.impl.UserServiceImpl;
+
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.HandlerList;
@@ -86,12 +99,22 @@ public class AppContextConfig {
                     bindAsContract(RoomDaoImpl.class).to(RoomDao.class);
                     bindAsContract(RoomServiceImpl.class).to(RoomService.class);
                     bindAsContract(RoomControllerImpl.class).to(RoomController.class);
+
                     bindAsContract(ResourceControllerImpl.class).to(ResourceController.class);
                     bindAsContract(ResourceServiceImpl.class).to(ResourceService.class);
                     bindAsContract(ResourceDaoImpl.class).to(ResourceDao.class);
+
                     bindAsContract(UserDaoImpl.class).to(UserDao.class);
                     bindAsContract(UserServiceImpl.class).to(UserService.class);
                     bindAsContract(UserControllerImpl.class).to(UserController.class);
+
+                    bindAsContract(BuildingDaoImpl.class).to(BuildingDao.class);
+                    bindAsContract(BuildingServiceImpl.class).to(BuildingService.class);
+                    bindAsContract(BuildingControllerImpl.class).to(BuildingController.class);
+
+                    bindAsContract(CardDaoImpl.class).to(CardDao.class);
+                    bindAsContract(CardServiceImpl.class).to(CardService.class);
+                    bindAsContract(CardControllerImpl.class).to(CardController.class);
 
                     bindAsContract(AccountDaoImpl.class).to(AccountDao.class);
                     bindAsContract(AccountServiceImpl.class).to(AccountService.class);
@@ -104,6 +127,23 @@ public class AppContextConfig {
                     bindAsContract(MessageDaoImpl.class).to(MessageDao.class);
                     bindAsContract(MessageServiceImpl.class).to(MessageService.class);
                     bindAsContract(MessageControllerImpl.class).to(MessageController.class);
+
+                    bindAsContract(AchievementDaoImpl.class).to(AchievementDao.class);
+                    bindAsContract(AchievementServiceImpl.class).to(AchievementService.class);
+                    bindAsContract(AchievementControllerImpl.class).to(AchievementController.class);
+
+                    bindAsContract(UpgradeDaoImpl.class).to(UpgradeDao.class);
+                    bindAsContract(UpgradeServiceImpl.class).to(UpgradeService.class);
+                    bindAsContract(UpgradeControllerImpl.class).to(UpgradeController.class);
+
+                    bindAsContract(UpgradeBuildingDaoImpl.class).to(UpgradeBuildingDao.class);
+                    bindAsContract(UpgradeBuildingServiceImpl.class).to(UpgradeBuildingService.class);
+
+                    bindAsContract(AccountUpgradeDaoImpl.class).to(AccountUpgradeDao.class);
+                    bindAsContract(AccountUpgradeServiceImpl.class).to(AccountUpgradeService.class);
+                    bindAsContract(AccountUpgradeControllerImpl.class).to(AccountUpgradeController.class);
+
+
 
                 }
             });

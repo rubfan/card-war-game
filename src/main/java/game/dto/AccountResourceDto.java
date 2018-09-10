@@ -1,12 +1,12 @@
 package game.dto;
 
 /**
- * @author evgen.Kaliba
+ * @author Evgen.Kaliba
  */
 public class AccountResourceDto {
     private Integer resourceId;
-    private Float amount;
-    private Float numPerMin;
+    private Integer amount;
+    private Integer numPerMin;
 
     @Override
     public String toString() {

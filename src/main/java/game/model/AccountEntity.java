@@ -12,6 +12,8 @@ public class AccountEntity implements Serializable {
     private RoomDto room;
     private Date startGameTime;
 
+    public AccountEntity() {}
+
     public AccountEntity(Integer id, UserDto user, RoomDto room, Date startGameTime) {
         this.id = id;
         this.user = user;
