@@ -20,7 +20,7 @@ public class GameApp {
 					break;
 				case "start":
 					Boolean debug = args.length > 1 && args[0].equals("debug");
-					Integer port = args.length > 2 ? Integer.parseInt(args[1]) : 9090;
+					Integer port = args.length > 2 ? Integer.parseInt(args[1]) : 8080;
 					startServer(debug, port);
 					break;
 				case "run":

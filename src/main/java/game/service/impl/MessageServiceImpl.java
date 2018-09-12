@@ -16,20 +16,18 @@ public class MessageServiceImpl implements MessageService {
     MessageDao messageDao;
 
     @Override
-    public String sendMessage(MessageDto message, String accountId, String enemyAccountId) {
+    public String sendMessage(String message, String accountId, String enemyAccountId) {
 
-        MessageEntity messageE = new MessageEntity();
-        messageDao.sendMessage(messageE, accountId, enemyAccountId);
-        MessageDto messageDto = new MessageDto(messageE);
 
-        return messageDto.getText();
+
+        return messageDao.sendMessage(message, accountId, enemyAccountId);
     }
 
     @Override
     public List<MessageDto> getRoomMessageList(String accountId, String enemyAccountId) {
         List<MessageDto> messages = new LinkedList<>();
-        messageDao.getRoomMessageList(accountId, enemyAccountId).forEach(message ->
-        messages.add(new MessageDto(message)));
+        messageDao.getRoomMessageList(accountId, enemyAccountId).forEach(messageEntity ->
+        messages.add(new MessageDto(messageEntity.getId(), messageEntity.getText(), messageEntity.getFromAccountId(), messageEntity.getToAccountId(), messageEntity.getTime())));
         return messages;
     }
 }

@@ -15,19 +15,19 @@ public class MessageDaoImpl implements MessageDao {
 
 
     @Override
-    public String sendMessage(MessageEntity message, String accountId, String enemyAccountId) {
+    public String sendMessage(String message, String accountId, String enemyAccountId) {
          return  new QueryHelper<String>() {
             protected void executeQuery(Statement statement, Connection connection) throws SQLException {
                 PreparedStatement psmt = connection.prepareStatement(
                         "INSERT INTO Message(text, from_account_id, to_account_id, time) VALUES (?, ?, ? ,?)"
                 );
-                psmt.setString(1, message.getText());
+                psmt.setString(1, message);
                 psmt.setInt(2, Integer.parseInt(accountId));
                 psmt.setInt(3, Integer.parseInt(enemyAccountId));
                 psmt.setString(4, new Date().toString());
                 psmt.executeUpdate();
 
-                returnResult(message.getText());
+                returnResult(message);
             }
         }.run();
     }

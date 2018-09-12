@@ -26,7 +26,7 @@ public class MessageControllerImpl implements MessageController {
     @POST
     @Path("send/{accountId}/{enemyAccountId}")
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public Response sendMessage( @BeanParam MessageDto message, @PathParam("accountId") String accountId, @PathParam("enemyAccountId") String enemyAccountId) {
+    public Response sendMessage( @PathParam("message") String message, @PathParam("accountId") String accountId, @PathParam("enemyAccountId") String enemyAccountId) {
         messageService.sendMessage(message, accountId, enemyAccountId);
         Logger.getLogger(this.getClass().getName()).log(Level.SEVERE,"MessageSend" );
         return Response.ok().build();
