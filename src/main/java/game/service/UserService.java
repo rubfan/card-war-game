@@ -12,3 +12,4 @@ public interface UserService {
     UserDto getUserByToken(String token);
     UserDto getUserById(Integer userId);
 }
+

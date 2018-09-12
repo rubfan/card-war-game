@@ -58,4 +58,3 @@ public class RoomControllerImpl implements RoomController {
         return Response.status(200).entity("User Left").build();
     }
 }
-

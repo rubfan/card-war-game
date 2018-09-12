@@ -96,6 +96,7 @@ public class UserDaoImpl implements UserDao {
         }.run();
     }
 
+
     public UserEntity getUserById(Integer userId) {
         return new QueryHelper<UserEntity>() {
             protected void executeQuery(Statement statement, Connection connection) throws SQLException {
@@ -115,3 +116,4 @@ public class UserDaoImpl implements UserDao {
         }.run();
     }
 }
+

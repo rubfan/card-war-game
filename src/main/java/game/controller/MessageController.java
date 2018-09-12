@@ -11,6 +11,7 @@ import java.util.List;
  * @author ruslan.gramatic
  */
 public interface MessageController {
+
     Response sendMessage(MessageDto message, String accountId, String enemyAccountId);
     List<MessageDto> getRoomMessageList(String accountId1, String enemyAccountId);
 }

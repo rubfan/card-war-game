@@ -51,6 +51,7 @@ public class UserServiceImpl implements UserService {
         );
     }
 
+
     public UserDto getUserById(Integer userId) {
         UserEntity userEntity = userDao.getUserById(userId);
         return new UserDto(
