@@ -15,48 +15,21 @@ public class MessageServiceImpl implements MessageService {
     @Inject
     MessageDao messageDao;
 
-//    @Override
-//    public List<MessageDto> getMessageList() {
-//        final List<MessageDto> messages = new LinkedList<>();
-////        messageDao.getMessageList().forEach(messageEntity ->
-////        messages.add(new MessageDto(){{
-////            setId(messageEntity.getId());
-////            setText(messageEntity.getText());
-////            setFromAccountId(messageEntity.getFromAccountId());
-////            setToAccountId(messageEntity.getToAccountId());
-////            setTime(messageEntity.getTime());
-////        }}));
-////
-////        return messages;
-//        return messages;
-//    }
-
     @Override
-    public String sendMessage(MessageDto message, String accountId) {
+    public String sendMessage(MessageDto message, String accountId, String enemyAccountId) {
 
         MessageEntity messageE = new MessageEntity();
-        messageDao.sendMessage(messageE, accountId);
-        MessageDto messageDto = new MessageDto(){{
-            setId(messageE.getId());
-            setText(messageE.getText());
-            setFromAccountId(messageE.getFromAccountId());
-            setToAccountId(messageE.getToAccountId());
-            setTime(messageE.getTime());}};
+        messageDao.sendMessage(messageE, accountId, enemyAccountId);
+        MessageDto messageDto = new MessageDto(messageE);
 
         return messageDto.getText();
     }
 
     @Override
-    public List<MessageDto> getRoomMessageList(String accountId1, String accountId2) {
+    public List<MessageDto> getRoomMessageList(String accountId, String enemyAccountId) {
         List<MessageDto> messages = new LinkedList<>();
-        messageDao.getRoomMessageList(accountId1, accountId2).forEach(messageEntity ->
-        messages.add(new MessageDto(){{
-            setId(messageEntity.getId());
-            setText(messageEntity.getText());
-            setFromAccountId(messageEntity.getFromAccountId());
-            setToAccountId(messageEntity.getToAccountId());
-            setTime(messageEntity.getTime());
-        }}));
+        messageDao.getRoomMessageList(accountId, enemyAccountId).forEach(message ->
+        messages.add(new MessageDto(message)));
         return messages;
     }
 }

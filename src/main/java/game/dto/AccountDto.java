@@ -9,7 +9,6 @@ public class AccountDto {
     private Integer id;
     private UserDto user;
     private RoomDto room;
-    private Date startGameTime;
 
     public AccountDto() {}
 
@@ -17,7 +16,6 @@ public class AccountDto {
         this.id = id;
         this.user = user;
         this.room = room;
-        this.startGameTime = startGameTime;
     }
 
     public Integer getId() {
@@ -44,13 +42,7 @@ public class AccountDto {
         this.room = room;
     }
 
-    public Date getStartGameTime() {
-        return startGameTime;
-    }
 
-    public void setStartGameTime(Date startGameTime) {
-        this.startGameTime = startGameTime;
-    }
 
     @Override
     public String toString() {
@@ -58,7 +50,6 @@ public class AccountDto {
                 "id=" + id +
                 ", user=" + user +
                 ", room=" + room +
-                ", startGameTime=" + startGameTime +
                 '}';
     }
 }

@@ -13,4 +13,5 @@ public interface RoomDao {
     List<AccountRoomEntity> getAccountRoomList();
     void joinRoom(Integer roomId, Integer accountId);
     void leaveRoom(Integer roomId, Integer accountId);
+    RoomEntity getRoomDto (Integer roomId);
 }

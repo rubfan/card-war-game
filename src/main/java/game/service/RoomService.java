@@ -13,4 +13,5 @@ public interface RoomService {
     List<AccountRoomDto> getAccountRoomList();
     void joinRoom(Integer roomId, Integer accountId);
     void leaveRoom(Integer roomId, Integer accountId);
+    RoomDto getRoomDto(Integer roomId);
 }

@@ -11,4 +11,5 @@ public interface UserDao {
     void logoutUser(String token);
     String createNewUser(UserEntity user);
     UserEntity getUserByToken(String token);
+    UserEntity getUserById(Integer userId);
 }

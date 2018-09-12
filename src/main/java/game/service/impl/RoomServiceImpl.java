@@ -2,6 +2,7 @@ package game.service.impl;
 
 import game.dto.AccountRoomDto;
 import game.dto.RoomDto;
+import game.model.RoomEntity;
 import game.repository.dao.RoomDao;
 import game.service.RoomService;
 
@@ -23,6 +24,7 @@ public class RoomServiceImpl implements RoomService {
             setId(roomEntity.getId());
             setName(roomEntity.getName());
             setDescription(roomEntity.getDescription());
+            setStartGameTime(roomEntity.getStartGameTime());
         }}));
         return rooms;
     }
@@ -33,6 +35,7 @@ public class RoomServiceImpl implements RoomService {
             setId(accountRoomEntity.getRoomId());
             setAccount1(accountRoomEntity.getAccount1());
             setAccount2(accountRoomEntity.getAccount2());
+
         }}));
         return dtoRooms;
 
@@ -42,7 +45,15 @@ public class RoomServiceImpl implements RoomService {
         roomDao.joinRoom(roomId, accountId);
     }
 
-    public void leaveRoom(Integer roomId, Integer accountId) {
-        roomDao.leaveRoom(roomId, accountId);
+    public void leaveRoom(Integer roomId, Integer accountId) {roomDao.leaveRoom(roomId, accountId);}
+
+    public RoomDto getRoomDto(Integer roomId){
+        RoomEntity room = roomDao.getRoomDto(roomId);
+        return new RoomDto(){{
+            setId(room.getId());
+            setName(room.getName());
+            setDescription(room.getDescription());
+            setStartGameTime(room.getStartGameTime());
+        }};
     }
 }

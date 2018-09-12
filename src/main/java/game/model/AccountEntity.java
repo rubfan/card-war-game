@@ -10,15 +10,14 @@ public class AccountEntity implements Serializable {
     private Integer id;
     private UserDto user;
     private RoomDto room;
-    private Date startGameTime;
+
 
     public AccountEntity() {}
 
-    public AccountEntity(Integer id, UserDto user, RoomDto room, Date startGameTime) {
+    public AccountEntity(Integer id, UserDto user, RoomDto room) {
         this.id = id;
         this.user = user;
         this.room = room;
-        this.startGameTime = startGameTime;
     }
 
     public Integer getId() {
@@ -45,13 +44,7 @@ public class AccountEntity implements Serializable {
         this.room = room;
     }
 
-    public Date getStartGameTime() {
-        return startGameTime;
-    }
 
-    public void setStartGameTime(Date startGameTime) {
-        this.startGameTime = startGameTime;
-    }
 
     @Override
     public String toString() {
@@ -59,7 +52,6 @@ public class AccountEntity implements Serializable {
                 "id=" + id +
                 ", user=" + user +
                 ", room=" + room +
-                ", startGameTime=" + startGameTime +
                 '}';
     }
 }

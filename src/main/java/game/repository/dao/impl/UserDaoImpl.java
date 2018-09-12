@@ -95,4 +95,23 @@ public class UserDaoImpl implements UserDao {
             }
         }.run();
     }
+
+    public UserEntity getUserById(Integer userId) {
+        return new QueryHelper<UserEntity>() {
+            protected void executeQuery(Statement statement, Connection connection) throws SQLException {
+                PreparedStatement pstmt = connection.prepareStatement(
+                        "SELECT id, name, password, token FROM User WHERE id = ?;");
+                pstmt.setInt(1, userId);
+                ResultSet rs = pstmt.executeQuery();
+                while(rs.next()) {
+                    returnResult(new UserEntity(
+                            rs.getInt("id"),
+                            rs.getString("name"),
+                            rs.getString("password"),
+                            rs.getString("token")
+                    ));
+                }
+            }
+        }.run();
+    }
 }

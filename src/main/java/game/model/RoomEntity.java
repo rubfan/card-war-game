@@ -10,11 +10,13 @@ public class RoomEntity implements Serializable {
     private Integer id;
     private String name;
     private String description;
+    private Date startGameTime;
 
-    public RoomEntity(Integer id, String name, String description) {
+    public RoomEntity(Integer id, String name, String description, Date startGameTime) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.startGameTime = startGameTime;
     }
 
     public RoomEntity() {}
@@ -43,12 +45,20 @@ public class RoomEntity implements Serializable {
         this.description = description;
     }
 
+    public Date getStartGameTime() {
+        return startGameTime;
+    }
+
+    public void setStartGameTime(Date startGameTime) {
+        this.startGameTime = startGameTime;
+    }
     @Override
     public String toString() {
         return "RoomEntity{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", description='" + description +
+                ", description='" + description + '\'' +
+                ", startGameTime='" + startGameTime + '\'' +
                 '}';
     }
 }

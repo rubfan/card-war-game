@@ -50,4 +50,14 @@ public class UserServiceImpl implements UserService {
                 userEntity.getToken()
         );
     }
+
+    public UserDto getUserById(Integer userId) {
+        UserEntity userEntity = userDao.getUserById(userId);
+        return new UserDto(
+                userEntity.getId(),
+                userEntity.getName(),
+                userEntity.getPassword(),
+                userEntity.getToken()
+        );
+    }
 }

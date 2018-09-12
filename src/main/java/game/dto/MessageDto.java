@@ -1,5 +1,7 @@
 package game.dto;
 
+import game.model.MessageEntity;
+
 import java.util.Date;
 
 /**
@@ -12,12 +14,12 @@ public class MessageDto {
     private Integer toAccountId;
     private Date time;
 
-    public MessageDto(Integer id, String text, Integer fromAccountId, Integer toAccountId, Date time) {
-        this.id = id;
-        this.text = text;
-        this.fromAccountId = fromAccountId;
-        this.toAccountId = toAccountId;
-        this.time = time;
+    public MessageDto(MessageEntity messageEntity) {
+        this.id = messageEntity.getId();
+        this.text = messageEntity.getText();
+        this.fromAccountId = messageEntity.getFromAccountId();
+        this.toAccountId = messageEntity.getToAccountId();
+        this.time = messageEntity.getTime();
     }
 
     public MessageDto() {
