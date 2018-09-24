@@ -10,4 +10,6 @@ public interface UserService {
     void logoutUser(String token);
     String createNewUser(UserDto user);
     UserDto getUserByToken(String token);
+    UserDto getUserById(Integer userId);
 }
+

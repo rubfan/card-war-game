@@ -8,6 +8,6 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 public interface MessageDao {
-    String sendMessage(MessageEntity message, String accountId);
-    List<MessageEntity> getRoomMessageList(String accountId1, String accountId2);
+    String sendMessage(String message, String accountId, String enemyAccountId);
+    List<MessageEntity> getRoomMessageList(String accountId1, String enemyAccountId);
 }

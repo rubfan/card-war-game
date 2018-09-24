@@ -64,9 +64,9 @@ public class MessageEntity implements Serializable {
         return "MessageEntity{" +
                 "id=" + id +
                 ", text='" + text + '\'' +
-                ", fromAccountId=" + fromAccountId +
-                ", toAccountId=" + toAccountId +
-                ", time=" + time +
+                ", fromAccountId=" + '\'' +fromAccountId +
+                ", toAccountId=" + '\'' +toAccountId +
+                ", time=" + '\'' + time +
                 '}';
     }
 }

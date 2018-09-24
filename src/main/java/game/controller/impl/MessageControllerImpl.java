@@ -10,6 +10,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.lang.annotation.Target;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,21 +24,21 @@ public class MessageControllerImpl implements MessageController {
 
 
     @POST
-    @Path("send/{accountId}")
+    @Path("send/{accountId}/{enemyAccountId}")
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public Response sendMessage(@Context MessageDto message,@PathParam("accountId") String accountId) {
-        messageService.sendMessage(message, accountId);
+    public Response sendMessage( @PathParam("message") String message, @PathParam("accountId") String accountId, @PathParam("enemyAccountId") String enemyAccountId) {
+        messageService.sendMessage(message, accountId, enemyAccountId);
+        Logger.getLogger(this.getClass().getName()).log(Level.SEVERE,"MessageSend" );
         return Response.ok().build();
 
     }
 
-    @POST
+    @GET
     @Path("list/{accountId1}/{accountId2}")
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public List<MessageDto> getRoomMessageList(@PathParam("accountId1") String accountId1, @PathParam("accountId2") String accountId2) {
-        List<MessageDto> roomMessageList = messageService.getRoomMessageList(accountId1, accountId2);
-        Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, roomMessageList.toString());
-        return roomMessageList;
-//        return null;
+    public List<MessageDto> getRoomMessageList(@PathParam("accountId1") String accountId, @PathParam("accountId2") String enemyAccountId) {
+        Logger.getLogger(this.getClass().getName()).log(Level.SEVERE,"MessageList" );
+
+        return  messageService.getRoomMessageList(accountId, enemyAccountId);
     }
 }

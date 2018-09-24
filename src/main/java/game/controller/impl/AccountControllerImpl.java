@@ -19,6 +19,7 @@ public class AccountControllerImpl implements AccountController {
     @GET
     @Path("{accountId}")
     public AccountDto getAccount(@PathParam("accountId") Integer accountId) {
-        return accountService.getAccount(accountId);
+        AccountDto accountDto = accountService.getAccount(accountId);
+        return accountDto;
     }
 }

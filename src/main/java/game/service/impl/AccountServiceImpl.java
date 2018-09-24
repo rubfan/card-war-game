@@ -15,10 +15,10 @@ public class AccountServiceImpl implements AccountService {
     public AccountDto getAccount(Integer accountId) {
             AccountEntity accountEntity = accountDao.getAccount(accountId);
 
-            return new AccountDto(
-                    accountEntity.getId(),
-                    accountEntity.getUser(),
-                    accountEntity.getRoom(),
-                    accountEntity.getStartGameTime());
+            return new AccountDto(){{
+                    accountEntity.getId();
+                    accountEntity.getUser();
+                    accountEntity.getRoom();
+            }};
            }
 }

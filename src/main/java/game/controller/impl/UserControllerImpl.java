@@ -7,11 +7,7 @@ import game.repository.dao.impl.AccountDaoImpl;
 import game.service.UserService;
 
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.CookieParam;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Cookie;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.NewCookie;
@@ -54,6 +50,14 @@ public class UserControllerImpl implements UserController {
 
     }
 
+    @GET
+    @Path("get/{userid}")
+    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public UserDto getUser(@PathParam("userid")Integer userId){
+        return userService.getUserById(userId);
+    }
+
+
     @POST
     @Path("new")
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
@@ -67,4 +71,5 @@ public class UserControllerImpl implements UserController {
         NewCookie newCookie = new NewCookie(preCookie, "Created new user and logged in/Or login if this user is exist", -1, false);
         return Response.status(201).entity("User").cookie(newCookie).build();
     }
+
 }
